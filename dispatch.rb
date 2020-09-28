@@ -15,10 +15,7 @@ def dispatch(cmd, params = nil)
         #     \n"
 
     when '2'
-        # ::Models.Player_hand
-        # print "\n You have been dealt the following cards:
-        # \n"
-        # print ::Deck.Cards[0]
+      ::RulesController.play
 
   
 

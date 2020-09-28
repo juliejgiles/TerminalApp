@@ -1,4 +1,5 @@
 require_relative 'dispatch'
+require_relative 'draw'
 
 
 puts "\n Welcome to Modified Poker"
