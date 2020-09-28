@@ -1,5 +1,5 @@
 module Draw
-    def draw_cards
+    def self.draw_cards
 
         card1 = Deck.new.draw
         card2 = Deck.new.draw
@@ -37,7 +37,7 @@ module Draw
         flop << card3 << card4 << card5 << card6 << card7
         # dealer_hand << card8 << card9
 
-        print "\n You have been dealt the following cards: \n"
+        print "\n You have been dealt the following cards: \n".red
         print "\n
         ┌────────────┐         ┌────────────┐         
         │#{a}           |         │#{b}           |         
@@ -51,11 +51,11 @@ module Draw
         "
 
         print "\n Select an option using the number below: 
-        \n"
-        print "\n 1 - fold"
-        print "\n 2 - check"
+        \n".red
+        print "\n 1 - fold".red
+        print "\n 2 - check".red
         print "\n 3 - quit game
-        \n"
+        \n".red
 
         input = gets.chomp.downcase.strip.split(' ')
         command, params = input 
@@ -65,18 +65,18 @@ module Draw
                 puts "\n You have chosen to fold in this round. 
                 \n"
             when '2'
-                print "\n The following cards have been dealt by the dealer: \n"
+                print "\n The Flop has been dealt by the dealer: \n"
                 
         print "\n
-        ┌────────────┐         ┌────────────┐         ┌────────────┐
-        │#{c}           |         │#{d}           |         │#{e}           | 
-        │            │         │            │         │            │ 
-        │            │         │            │         │            │
-        │     #{u}      │         │     #{v}      │         │     #{w}      │
-        │            │         │            │         │            │ 
-        │            │         │            │         │            │ 
-        │           #{c}│         │           #{d}│         │           #{e}│
-        └────────────┘         └────────────┘         └────────────┘
+        ┌────────────┐         ┌────────────┐         ┌────────────┐        ┌────────────┐        ┌────────────┐
+        │#{c}           |         │#{d}           |         │#{e}           |        │░░░░░░░░░░░░|        │░░░░░░░░░░░░|
+        │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
+        │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
+        │     #{u}      │         │     #{v}      │         │     #{w}      │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
+        │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
+        │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
+        │           #{c}│         │           #{d}│         │           #{e}│        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
+        └────────────┘         └────────────┘         └────────────┘        └────────────┘        └────────────┘
         "
 
 
@@ -90,5 +90,5 @@ module Draw
         end
     end
 
-    module_function :draw_cards
+    
 end 

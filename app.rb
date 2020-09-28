@@ -1,5 +1,6 @@
 require_relative 'dispatch'
 require_relative 'draw'
+require_relative './views/animation.rb'
 require 'colorize'
 require 'colorized_string'
 
@@ -24,7 +25,7 @@ puts "
 
 ".red
 
-
+puts "test".blink
                                                                                                                                               
                                                                                                                                               
 
@@ -32,10 +33,10 @@ puts "
 
 puts "                                      JULIE GILES                                         ".colorize(:color => :red, :background => :white)
 
-print "\n+========================================================================================+ \n"
+print "\n+=========================================================================================+ \n"
 
     puts "\n What\'s your name?".red
-print "\n+========================================================================================+ \n"
+print "\n+=========================================================================================+ \n"
     Player_name = gets.chomp.strip
 
 begin 
