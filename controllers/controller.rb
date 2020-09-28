@@ -5,11 +5,11 @@ require_relative '../draw.rb'
 
 module RulesController 
     def show 
-        ::Views.Rules.print_rules
+        ::Views::Rules.print_rules
     end 
 
     def play 
-        ::Draw
+        ::Draw.draw_cards
     end 
 
     module_function :show, :play

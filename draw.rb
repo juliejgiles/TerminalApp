@@ -1,4 +1,5 @@
 module Draw
+    def draw_cards
 
         card1 = Deck.new.draw
         card2 = Deck.new.draw
@@ -87,6 +88,7 @@ module Draw
                 \n"
 
         end
+    end
 
-        module_function :draw
+    module_function :draw_cards
 end 
