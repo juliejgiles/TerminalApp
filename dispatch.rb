@@ -3,10 +3,10 @@ require_relative 'controllers/controller.rb'
 def dispatch(cmd, params = nil)
     case cmd
     when '1'
-        ::RulesController.show
+    ::GameController.show
         
     when '2'
-      ::RulesController.play
+    ::GameController.play
 
   
 
