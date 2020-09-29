@@ -126,7 +126,7 @@ module Draw
 
                             case input3 
                             when '1'
-                                print "\n The dealer's cards are \n".red
+                                print "\n The dealer's cards are: \n".red
                                 print "\n
                                 ┌────────────┐         ┌────────────┐         
                                 │#{h}           |         │#{i}           |         
@@ -157,30 +157,61 @@ module Draw
     
                                     player_hand = []
                                     dealer_hand = []
+                                    player_scores = []
+                                    dealer_scores = []
                                     player_hand << card1 << card2 << card3 << card4 << card5 << card6 << card7
                                     dealer_hand << card8 << card9 << card3 << card4 << card5 << card6 << card7
-                                    p player_hand[0].value
-                                    p dealer_hand[0].value
+                                    # p player_hand[0].value
+                                    # p dealer_hand[0].value
 
-                                    order = [[1, :♦], [1, :♣], [1, :♥], [1, :♠],
-                                    [2, :♦], [2, :♣], [2, :♥], [2, :♠],
-                                    [3, :♦], [3, :♣], [3, :♥], [3, :♠],
-                                    [4, :♦], [4, :♣], [4, :♥], [4, :♠],
-                                    [5, :♦], [5, :♣], [5, :♥], [5, :♠],
-                                    [6, :♦], [6, :♣], [6, :♥], [6, :♠],
-                                    [7, :♦], [7, :♣], [7, :♥], [7, :♠],
-                                    [8, :♦], [8, :♣], [8, :♥], [8, :♠],
-                                    [9, :♦], [9, :♣], [9, :♥], [9, :♠],
-                                    [10, :♦], [10, :♣], [10, :♥], [10, :♠],
-                                    [11, :♦], [11, :♣], [11, :♥], [11, :♠],
-                                    [12, :♦], [12, :♣], [12, :♥], [12, :♠],
-                                    [13, :♦], [13, :♣], [13, :♥], [13, :♠]]
+                                    order = [ [ '', ''],
+                                             [2, :♦],   [2, :♣],  [2, :♥],  [2, :♠],
+                                             [3, :♦],   [3, :♣],  [3, :♥],  [3, :♠],
+                                             [4, :♦],   [4, :♣],  [4, :♥],  [4, :♠],
+                                             [5, :♦],   [5, :♣],  [5, :♥],  [5, :♠],
+                                             [6, :♦],   [6, :♣],  [6, :♥],  [6, :♠],
+                                             [7, :♦],   [7, :♣],  [7, :♥],  [7, :♠],
+                                             [8, :♦],   [8, :♣],  [8, :♥],  [8, :♠],
+                                             [9, :♦],   [9, :♣],  [9, :♥],  [9, :♠],
+                                             [10, :♦],  [10, :♣], [10, :♥], [10, :♠],
+                                             [:J, :♦], [:J, :♣],[:J, :♥],[:J, :♠],
+                                             [:Q, :♦], [:Q, :♣],[:Q, :♥],[:Q, :♠],
+                                             [:K, :♦], [:K, :♣],[:K, :♥],[:K, :♠],  
+                                             [:A, :♦], [:A, :♣],[:A, :♥],[:A, :♠]
+                                            ]
                             
-                                    p order.index([player_hand[0].value, player_hand[0].suit])+ 1
+                                    #CALCULATING PLAYER'S SCORES
+                                    player_card_1 = (order.index([player_hand[0].value, player_hand[0].suit]))
+                                    player_card_2 = (order.index([player_hand[1].value, player_hand[1].suit]))
+                                    player_card_3 = (order.index([player_hand[2].value, player_hand[2].suit]))
+                                    player_card_4 = (order.index([player_hand[3].value, player_hand[3].suit]))
+                                    player_card_5 = (order.index([player_hand[4].value, player_hand[4].suit]))
+                                    player_card_6 = (order.index([player_hand[5].value, player_hand[5].suit]))
+                                    player_card_7 = (order.index([player_hand[6].value, player_hand[6].suit])) 
                                     
+                                    
+                                    player_scores << player_card_1  << player_card_2 << player_card_3 << player_card_4  << player_card_5  << player_card_6  << player_card_7 
+                                    # p player_scores
+
+                                    player_score = player_scores.sort
+
+                                    #CALCULATING DEALER'S SCORES
+                                    
+                                    card_1 = (order.index([dealer_hand[0].value, dealer_hand[0].suit]))
+                                    card_2 = (order.index([dealer_hand[1].value, dealer_hand[1].suit]))
+                                    card_3 = (order.index([dealer_hand[2].value, dealer_hand[2].suit]))
+                                    card_4 = (order.index([dealer_hand[3].value, dealer_hand[3].suit]))
+                                    card_5 = (order.index([dealer_hand[4].value, dealer_hand[4].suit]))
+                                    card_6 = (order.index([dealer_hand[5].value, dealer_hand[5].suit]))
+                                    card_7 = (order.index([dealer_hand[6].value, dealer_hand[6].suit])) 
+                                  
+                                    dealer_scores << card_1  << card_2 << card_3 << card_4  << card_5  << card_6  << card_7 
+                                    p player_scores
+
+                                    dealer_score = dealer_scores.sort
                                 # print "\n The winner is #{winner} \n".red
 
-
+                                # ::Animations.animation_player(lose1)
 
                             when '2'
                                 puts "\n You have chosen to quit the game. 
