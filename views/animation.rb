@@ -117,5 +117,5 @@ module Animations
     
 end 
 
-test = ['t','e','s','t']
-::Animations.animation_player(test)
+# test = ['t','e','s','t']
+# ::Animations.animation_player(test)

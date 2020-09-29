@@ -1,3 +1,5 @@
+require_relative 'dispatch2'
+
 module Draw
     def self.draw_cards
 
@@ -63,9 +65,9 @@ module Draw
         case command 
             when '1'
                 puts "\n You have chosen to fold in this round. 
-                \n"
+                \n".red
             when '2'
-                print "\n The Flop has been dealt by the dealer: \n"
+                print "\n The Flop has been dealt by the dealer: \n".red
                 
         print "\n
         ┌────────────┐         ┌────────────┐         ┌────────────┐        ┌────────────┐        ┌────────────┐
@@ -78,16 +80,49 @@ module Draw
         │           #{c}│         │           #{d}│         │           #{e}│        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
         └────────────┘         └────────────┘         └────────────┘        └────────────┘        └────────────┘
         "
+            
+        print "\n Select an option using the number below: 
+        \n".red
+        print "\n 1 - fold".red
+        print "\n 2 - check".red
+        print "\n 3 - quit game
+        \n".red
 
+        input2 = gets.chomp.downcase.strip
+        # command2, params = input2 
+        # dispatch2 command2, params
+        
+                case input2 
+                    when '1'
+                        puts "\n You have chosen to fold in this round. 
+                                        \n".red
 
+                    when '2'
 
-            when '3'
-                puts "3"
-            else
-                puts "\n Not a valid option, please try again.
-                \n"
+                        puts "\n The Turn and River have now been dealt: 
+                        \n".red
 
-        end
+                    print "\n
+
+                    ┌────────────┐         ┌────────────┐         ┌────────────┐        ┌────────────┐        ┌────────────┐
+                    │#{c}           |         │#{d}           |         │#{e}           |        │#{f}           |        │#{g}           |
+                    │            │         │            │         │            │        │            │        │            │
+                    │            │         │            │         │            │        │            │        │            │
+                    │     #{u}      │         │     #{v}      │         │     #{w}      │        │      #{x}     │        │      #{y}     │
+                    │            │         │            │         │            │        │            │        │            │
+                    │            │         │            │         │            │        │            │        │            │
+                    │           #{c}│         │           #{d}│         │           #{e}│        │           #{f}│        │           #{g}│
+                    └────────────┘         └────────────┘         └────────────┘        └────────────┘        └────────────┘
+                    "
+               
+
+                    when '3'
+                        puts "\n You have chosen to quit the game. 
+                        \n".red
+                    else
+                        p input2
+                 end 
+                end
     end
 
     

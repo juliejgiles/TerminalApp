@@ -1,4 +1,5 @@
 require_relative 'dispatch'
+require_relative 'dispatch2'
 require_relative 'draw'
 require_relative './views/animation.rb'
 require 'colorize'
@@ -49,7 +50,7 @@ begin
     command, params = input
     dispatch command, params
 
-end until ['3', 'q'].include? command
+end until ['3', '2', 'q'].include? command
 
 
 

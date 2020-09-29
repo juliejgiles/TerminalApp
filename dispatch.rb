@@ -8,8 +8,6 @@ def dispatch(cmd, params = nil)
     when '2'
     ::GameController.play
 
-  
-
     when '3'
         puts "\n You have quit the game.
         \n"
@@ -17,7 +15,6 @@ def dispatch(cmd, params = nil)
     else
         puts "\n Not a valid option, please try again. 
         \n"
-        
     end 
-
 end 
+
