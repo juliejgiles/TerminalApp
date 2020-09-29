@@ -39,6 +39,113 @@ module Draw
         h = card8.value
         i = card9.value  
 
+       case a
+        when 11
+            a = 'J'
+        when 12
+            a = 'Q'
+        when 13
+            a = 'K'
+        when 14
+            a = 'A'
+        end 
+
+        case b
+        when 11
+            b = 'J'
+        when 12
+            b = 'Q'
+        when 13
+            b = 'K'
+        when 14
+            b = 'A'
+        end 
+
+        case c
+        when 11
+            c = 'J'
+        when 12
+            c = 'Q'
+        when 13
+            c = 'K'
+        when 14
+            c = 'A'
+        end 
+
+        case d
+        when 11
+            d = 'J'
+        when 12
+            d = 'Q'
+        when 13
+            d = 'K'
+        when 14
+            d = 'A'
+        end 
+
+        case e
+        when 11
+            e = 'J'
+        when 12
+            e = 'Q'
+        when 13
+            e = 'K'
+        when 14
+            e = 'A'
+        end 
+
+        case f
+        when 11
+            f = 'J'
+        when 12
+            f = 'Q'
+        when 13
+            f = 'K'
+        when 14
+            f = 'A'
+        end 
+
+
+        case g
+        when 11
+            g = 'J'
+        when 12
+            g = 'Q'
+        when 13
+            g = 'K'
+        when 14
+            g = 'A'
+        end 
+
+
+        case h
+        when 11
+            h = 'J'
+        when 12
+            h = 'Q'
+        when 13
+            h = 'K'
+        when 14
+            h = 'A'
+        end 
+
+
+        case i
+        when 11
+            i = 'J'
+        when 12
+            i = 'Q'
+        when 13
+            i = 'K'
+        when 14
+            i = 'A'
+        end 
+
+
+
+
+
+
          
 
         print "\n You have been dealt the following cards: \n".red
@@ -517,12 +624,12 @@ module Draw
                                            
                                            " 
                                            
-                                                                                                     ___________________________________ ______________________
-                                                                                                     \                                  | (_)     (_)    (_)   \
-                                                                                                     `.                                |  __________________   |
-                                                                                                       `-..........................____|_(                  )_/
-                                           
-                                            
+                                                                                                     ___________________________________ ______________________              
+                                                                                                     \                                  | (_)     (_)    (_)   \                  
+                                                                                                     `.                                |  __________________   |                      
+                                                                                                       `-..........................____|_(                  )_/                     
+                                                                                                                                                                  
+                                                            
                                                                           WWM
                                                                          kO0XN
                                                                          xkxx0W    0XNW
@@ -560,7 +667,7 @@ module Draw
                                            " 
                                            
                                                                                                ___________________________________ ______________________
-                                                                                               \                                  | (_)     (_)    (_)   \
+                                                                                               \                                  | (_)     (_)    (_)   \                   
                                                                                                 `.                                |  __________________   |
                                                                                                   `-..........................____|_(                  )_/
                                            
