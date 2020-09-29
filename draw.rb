@@ -1,4 +1,6 @@
 require_relative 'dispatch2'
+require_relative './models/deck.rb'
+require_relative './models/card.rb'
 
 module Draw
     def self.draw_cards
@@ -35,6 +37,8 @@ module Draw
         g = card7.value
         h = card8.value
         i = card9.value  
+
+         
 
         print "\n You have been dealt the following cards: \n".red
         print "\n
@@ -148,14 +152,32 @@ module Draw
                                 └────────────┘         └────────────┘         
                                 "
 
-                                #Determining the winner
+                                    #Determining the winner
                                 
-                                player_hand << card1 << card2 << card3 << card4 << card5 << card6 << card7
-                                dealer_hand << card8 << card9 << card3 << card4 << card5 << card6 << card7
-                                
-                                
-                                
-                                
+    
+                                    player_hand = []
+                                    dealer_hand = []
+                                    player_hand << card1 << card2 << card3 << card4 << card5 << card6 << card7
+                                    dealer_hand << card8 << card9 << card3 << card4 << card5 << card6 << card7
+                                    p player_hand[0].value
+                                    p dealer_hand[0].value
+
+                                    order = [[1, :♦], [1, :♣], [1, :♥], [1, :♠],
+                                    [2, :♦], [2, :♣], [2, :♥], [2, :♠],
+                                    [3, :♦], [3, :♣], [3, :♥], [3, :♠],
+                                    [4, :♦], [4, :♣], [4, :♥], [4, :♠],
+                                    [5, :♦], [5, :♣], [5, :♥], [5, :♠],
+                                    [6, :♦], [6, :♣], [6, :♥], [6, :♠],
+                                    [7, :♦], [7, :♣], [7, :♥], [7, :♠],
+                                    [8, :♦], [8, :♣], [8, :♥], [8, :♠],
+                                    [9, :♦], [9, :♣], [9, :♥], [9, :♠],
+                                    [10, :♦], [10, :♣], [10, :♥], [10, :♠],
+                                    [11, :♦], [11, :♣], [11, :♥], [11, :♠],
+                                    [12, :♦], [12, :♣], [12, :♥], [12, :♠],
+                                    [13, :♦], [13, :♣], [13, :♥], [13, :♠]]
+                            
+                                    p order.index([player_hand[0].value, player_hand[0].suit])+ 1
+                                    
                                 # print "\n The winner is #{winner} \n".red
 
 
@@ -172,7 +194,10 @@ module Draw
                         p input2
                  end 
                 end
-    end
+    
+            end
 
+                           
+                                
     
 end 
