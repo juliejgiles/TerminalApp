@@ -1,3 +1,7 @@
+require_relative 'dispatch2'
+require_relative './models/deck.rb'
+require_relative './models/card.rb'
+
 module Draw
     def self.draw_cards
 
@@ -13,13 +17,15 @@ module Draw
         # puts "You got the #{card.value} of #{card.suit}"
 
 
-        s = card1.suit
-        t = card2.suit
-        u = card3.suit
-        v = card4.suit
-        w = card5.suit
-        x = card6.suit
-        y = card7.suit
+        r = card1.suit
+        s = card2.suit
+        t = card3.suit
+        u = card4.suit
+        v = card5.suit
+        w = card6.suit
+        x = card7.suit
+        y = card8.suit
+        z = card9.suit
 
 
         a = card1.value
@@ -29,13 +35,10 @@ module Draw
         e = card5.value
         f = card6.value
         g = card7.value
+        h = card8.value
+        i = card9.value  
 
-
-        player_hand = []
-        flop = []
-        player_hand << card1 << card2 
-        flop << card3 << card4 << card5 << card6 << card7
-        # dealer_hand << card8 << card9
+         
 
         print "\n You have been dealt the following cards: \n".red
         print "\n
@@ -43,7 +46,7 @@ module Draw
         │#{a}           |         │#{b}           |         
         │            │         │            │         
         │            │         │            │        
-        │     #{s}      │         │     #{t}      │         
+        │     #{r}      │         │     #{s}      │         
         │            │         │            │         
         │            │         │            │         
         │           #{a}│         │           #{b}│         
@@ -63,32 +66,169 @@ module Draw
         case command 
             when '1'
                 puts "\n You have chosen to fold in this round. 
-                \n"
+                \n".red
             when '2'
-                print "\n The Flop has been dealt by the dealer: \n"
+                print "\n The Flop has been dealt by the dealer: \n".red
                 
         print "\n
         ┌────────────┐         ┌────────────┐         ┌────────────┐        ┌────────────┐        ┌────────────┐
         │#{c}           |         │#{d}           |         │#{e}           |        │░░░░░░░░░░░░|        │░░░░░░░░░░░░|
         │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
         │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
-        │     #{u}      │         │     #{v}      │         │     #{w}      │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
+        │     #{t}      │         │     #{u}      │         │     #{v}      │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
         │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
         │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
         │           #{c}│         │           #{d}│         │           #{e}│        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
         └────────────┘         └────────────┘         └────────────┘        └────────────┘        └────────────┘
         "
+            
+        print "\n Select an option using the number below: 
+        \n".red
+        print "\n 1 - fold".red
+        print "\n 2 - check".red
+        print "\n 3 - quit game
+        \n".red
 
+        input2 = gets.chomp.downcase.strip
+        # command2, params = input2 
+        # dispatch2 command2, params
+        
+                case input2 
+                    when '1'
+                        puts "\n You have chosen to fold in this round. 
+                                        \n".red
 
+                    when '2'
 
-            when '3'
-                puts "3"
-            else
-                puts "\n Not a valid option, please try again.
-                \n"
+                        puts "\n The Turn and River have now been dealt: 
+                        \n".red
 
-        end
-    end
+        print "\n
 
+        ┌────────────┐         ┌────────────┐         ┌────────────┐        ┌────────────┐        ┌────────────┐
+        │#{c}           |         │#{d}           |         │#{e}           |        │#{f}           |        │#{g}           |
+        │            │         │            │         │            │        │            │        │            │
+        │            │         │            │         │            │        │            │        │            │
+        │     #{t}      │         │     #{u}      │         │     #{v}      │        │      #{w}     │        │      #{x}     │
+        │            │         │            │         │            │        │            │        │            │
+        │            │         │            │         │            │        │            │        │            │
+        │           #{c}│         │           #{d}│         │           #{e}│        │           #{f}│        │           #{g}│
+        └────────────┘         └────────────┘         └────────────┘        └────────────┘        └────────────┘
+                    "
+               
+                        print "\n Select an option using the number below: 
+                        \n".red
+                        print "\n 1 - reveal cards!".red
+                        print "\n 2 - quit game
+                        \n".red
+
+                        input3 = gets.chomp.downcase.strip
+
+                            case input3 
+                            when '1'
+                                print "\n The dealer's cards are: \n".red
+                                print "\n
+                                ┌────────────┐         ┌────────────┐         
+                                │#{h}           |         │#{i}           |         
+                                │            │         │            │         
+                                │            │         │            │        
+                                │     #{y}      │         │     #{z}      │         
+                                │            │         │            │         
+                                │            │         │            │         
+                                │           #{h}│         │           #{i}│         
+                                └────────────┘         └────────────┘         
+                                "
+                            
+                                print "\n And your cards were: \n".red
+                                print "\n
+                                ┌────────────┐         ┌────────────┐         
+                                │#{a}           |         │#{b}           |         
+                                │            │         │            │         
+                                │            │         │            │        
+                                │     #{r}      │         │     #{s}      │         
+                                │            │         │            │         
+                                │            │         │            │         
+                                │           #{a}│         │           #{b}│         
+                                └────────────┘         └────────────┘         
+                                "
+
+                                    #Determining the winner
+                                
+    
+                                    player_hand = []
+                                    dealer_hand = []
+                                    player_scores = []
+                                    dealer_scores = []
+                                    player_hand << card1 << card2 << card3 << card4 << card5 << card6 << card7
+                                    dealer_hand << card8 << card9 << card3 << card4 << card5 << card6 << card7
+                                    # p player_hand[0].value
+                                    # p dealer_hand[0].value
+
+                                    order = [ [ '', ''],
+                                             [2, :♦],   [2, :♣],  [2, :♥],  [2, :♠],
+                                             [3, :♦],   [3, :♣],  [3, :♥],  [3, :♠],
+                                             [4, :♦],   [4, :♣],  [4, :♥],  [4, :♠],
+                                             [5, :♦],   [5, :♣],  [5, :♥],  [5, :♠],
+                                             [6, :♦],   [6, :♣],  [6, :♥],  [6, :♠],
+                                             [7, :♦],   [7, :♣],  [7, :♥],  [7, :♠],
+                                             [8, :♦],   [8, :♣],  [8, :♥],  [8, :♠],
+                                             [9, :♦],   [9, :♣],  [9, :♥],  [9, :♠],
+                                             [10, :♦],  [10, :♣], [10, :♥], [10, :♠],
+                                             [:J, :♦], [:J, :♣],[:J, :♥],[:J, :♠],
+                                             [:Q, :♦], [:Q, :♣],[:Q, :♥],[:Q, :♠],
+                                             [:K, :♦], [:K, :♣],[:K, :♥],[:K, :♠],  
+                                             [:A, :♦], [:A, :♣],[:A, :♥],[:A, :♠]
+                                            ]
+                            
+                                    #CALCULATING PLAYER'S SCORES
+                                    player_card_1 = (order.index([player_hand[0].value, player_hand[0].suit]))
+                                    player_card_2 = (order.index([player_hand[1].value, player_hand[1].suit]))
+                                    player_card_3 = (order.index([player_hand[2].value, player_hand[2].suit]))
+                                    player_card_4 = (order.index([player_hand[3].value, player_hand[3].suit]))
+                                    player_card_5 = (order.index([player_hand[4].value, player_hand[4].suit]))
+                                    player_card_6 = (order.index([player_hand[5].value, player_hand[5].suit]))
+                                    player_card_7 = (order.index([player_hand[6].value, player_hand[6].suit])) 
+                                    
+                                    
+                                    player_scores << player_card_1  << player_card_2 << player_card_3 << player_card_4  << player_card_5  << player_card_6  << player_card_7 
+                                    # p player_scores
+
+                                    player_score = player_scores.sort
+
+                                    #CALCULATING DEALER'S SCORES
+                                    
+                                    card_1 = (order.index([dealer_hand[0].value, dealer_hand[0].suit]))
+                                    card_2 = (order.index([dealer_hand[1].value, dealer_hand[1].suit]))
+                                    card_3 = (order.index([dealer_hand[2].value, dealer_hand[2].suit]))
+                                    card_4 = (order.index([dealer_hand[3].value, dealer_hand[3].suit]))
+                                    card_5 = (order.index([dealer_hand[4].value, dealer_hand[4].suit]))
+                                    card_6 = (order.index([dealer_hand[5].value, dealer_hand[5].suit]))
+                                    card_7 = (order.index([dealer_hand[6].value, dealer_hand[6].suit])) 
+                                  
+                                    dealer_scores << card_1  << card_2 << card_3 << card_4  << card_5  << card_6  << card_7 
+                                    p player_scores
+
+                                    dealer_score = dealer_scores.sort
+                                # print "\n The winner is #{winner} \n".red
+
+                                # ::Animations.animation_player(lose1)
+
+                            when '2'
+                                puts "\n You have chosen to quit the game. 
+                                \n".red
+                            end 
+
+                    when '3'
+                        puts "\n You have chosen to quit the game. 
+                        \n".red
+                    else
+                        p input2
+                 end 
+                end
+    
+            end
+
+                           
+                                
     
 end 
