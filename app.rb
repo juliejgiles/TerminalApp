@@ -25,9 +25,7 @@ puts "
 
 ".red
 
-puts "test".blink
-                                                                                                                                              
-                                                                                                                                              
+                                                                                                                                                                                                                                                                              
 
                                                                            
 
