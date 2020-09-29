@@ -15,13 +15,15 @@ module Draw
         # puts "You got the #{card.value} of #{card.suit}"
 
 
-        s = card1.suit
-        t = card2.suit
-        u = card3.suit
-        v = card4.suit
-        w = card5.suit
-        x = card6.suit
-        y = card7.suit
+        r = card1.suit
+        s = card2.suit
+        t = card3.suit
+        u = card4.suit
+        v = card5.suit
+        w = card6.suit
+        x = card7.suit
+        y = card8.suit
+        z = card9.suit
 
 
         a = card1.value
@@ -31,13 +33,8 @@ module Draw
         e = card5.value
         f = card6.value
         g = card7.value
-
-
-        player_hand = []
-        flop = []
-        player_hand << card1 << card2 
-        flop << card3 << card4 << card5 << card6 << card7
-        # dealer_hand << card8 << card9
+        h = card8.value
+        i = card9.value  
 
         print "\n You have been dealt the following cards: \n".red
         print "\n
@@ -45,7 +42,7 @@ module Draw
         │#{a}           |         │#{b}           |         
         │            │         │            │         
         │            │         │            │        
-        │     #{s}      │         │     #{t}      │         
+        │     #{r}      │         │     #{s}      │         
         │            │         │            │         
         │            │         │            │         
         │           #{a}│         │           #{b}│         
@@ -74,7 +71,7 @@ module Draw
         │#{c}           |         │#{d}           |         │#{e}           |        │░░░░░░░░░░░░|        │░░░░░░░░░░░░|
         │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
         │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
-        │     #{u}      │         │     #{v}      │         │     #{w}      │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
+        │     #{t}      │         │     #{u}      │         │     #{v}      │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
         │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
         │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
         │           #{c}│         │           #{d}│         │           #{e}│        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
@@ -102,19 +99,71 @@ module Draw
                         puts "\n The Turn and River have now been dealt: 
                         \n".red
 
-                    print "\n
+        print "\n
 
-                    ┌────────────┐         ┌────────────┐         ┌────────────┐        ┌────────────┐        ┌────────────┐
-                    │#{c}           |         │#{d}           |         │#{e}           |        │#{f}           |        │#{g}           |
-                    │            │         │            │         │            │        │            │        │            │
-                    │            │         │            │         │            │        │            │        │            │
-                    │     #{u}      │         │     #{v}      │         │     #{w}      │        │      #{x}     │        │      #{y}     │
-                    │            │         │            │         │            │        │            │        │            │
-                    │            │         │            │         │            │        │            │        │            │
-                    │           #{c}│         │           #{d}│         │           #{e}│        │           #{f}│        │           #{g}│
-                    └────────────┘         └────────────┘         └────────────┘        └────────────┘        └────────────┘
+        ┌────────────┐         ┌────────────┐         ┌────────────┐        ┌────────────┐        ┌────────────┐
+        │#{c}           |         │#{d}           |         │#{e}           |        │#{f}           |        │#{g}           |
+        │            │         │            │         │            │        │            │        │            │
+        │            │         │            │         │            │        │            │        │            │
+        │     #{t}      │         │     #{u}      │         │     #{v}      │        │      #{w}     │        │      #{x}     │
+        │            │         │            │         │            │        │            │        │            │
+        │            │         │            │         │            │        │            │        │            │
+        │           #{c}│         │           #{d}│         │           #{e}│        │           #{f}│        │           #{g}│
+        └────────────┘         └────────────┘         └────────────┘        └────────────┘        └────────────┘
                     "
                
+                        print "\n Select an option using the number below: 
+                        \n".red
+                        print "\n 1 - reveal cards!".red
+                        print "\n 2 - quit game
+                        \n".red
+
+                        input3 = gets.chomp.downcase.strip
+
+                            case input3 
+                            when '1'
+                                print "\n The dealer's cards are \n".red
+                                print "\n
+                                ┌────────────┐         ┌────────────┐         
+                                │#{h}           |         │#{i}           |         
+                                │            │         │            │         
+                                │            │         │            │        
+                                │     #{y}      │         │     #{z}      │         
+                                │            │         │            │         
+                                │            │         │            │         
+                                │           #{h}│         │           #{i}│         
+                                └────────────┘         └────────────┘         
+                                "
+                            
+                                print "\n And your cards were: \n".red
+                                print "\n
+                                ┌────────────┐         ┌────────────┐         
+                                │#{a}           |         │#{b}           |         
+                                │            │         │            │         
+                                │            │         │            │        
+                                │     #{r}      │         │     #{s}      │         
+                                │            │         │            │         
+                                │            │         │            │         
+                                │           #{a}│         │           #{b}│         
+                                └────────────┘         └────────────┘         
+                                "
+
+                                #Determining the winner
+                                
+                                player_hand << card1 << card2 << card3 << card4 << card5 << card6 << card7
+                                dealer_hand << card8 << card9 << card3 << card4 << card5 << card6 << card7
+                                
+                                
+                                
+                                
+                                # print "\n The winner is #{winner} \n".red
+
+
+
+                            when '2'
+                                puts "\n You have chosen to quit the game. 
+                                \n".red
+                            end 
 
                     when '3'
                         puts "\n You have chosen to quit the game. 
