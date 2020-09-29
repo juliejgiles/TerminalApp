@@ -1,8 +1,30 @@
+module Views
 module Animations
 
     def self.animation_player(string)
       string.each do |n|
-          print `clear`, "
+        print   "
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        "
+        
+        
+        
+        
+        print `clear`, "
           
           
 
@@ -19,7 +41,7 @@ module Animations
     
     end
 
-  end 
+
 
 
     lose1 = 
@@ -457,12 +479,17 @@ module Animations
                  Xocodxxxdddxxxxxxd0
                  Klcddxkkxddxxxxxxd0
                  0ccodxkkkxxxkkxxxd0W  "]
-
                  
+  
+  # def play_lose_animation(lose1)
+  #  ::Animations.animation_player(lose1)
+  # end            
 # test = ['t','e','s','t']
 # ::Animations.animation_player(test)
 
 # lose1 = ['h',
 #  'i']
-# ::Animations.animation_player(lose1)
 
+
+end 
+end 
