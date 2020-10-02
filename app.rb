@@ -45,10 +45,6 @@ print "\n+======================================================================
     
 
 begin 
-    
-    # print "\n #{name}, select an option by entering its number:
-    # \n".red
-
 choices = [
     {name: '1 - Read the rules'.red, value: 1},
     {name: '2 - Play now'.red, value: 2},
