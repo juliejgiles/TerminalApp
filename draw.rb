@@ -447,7 +447,7 @@ module Draw
                                                 \n".red
                                                 player_rank = 5
 
-                                            #checking for straight
+                                            # checking for straight
                                             # elsif player_card_number.each_cons(5).find {|a| a[1] - a[0] == 4}
                                             #     print "\n You have a straight
                                             #     \n".red
@@ -1008,4 +1008,4 @@ module Draw
                            
                                 
     
-end 
+end        

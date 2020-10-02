@@ -2,8 +2,11 @@ require_relative 'dispatch'
 require_relative 'dispatch2'
 require_relative 'draw'
 require_relative './views/animation.rb'
+require_relative './views/rules.rb'
+require_relative './views/end.rb'
 require 'colorize'
 require 'colorized_string'
+require 'tty-prompt'
 
 
 print "\n +========================================================================================+ \n"
@@ -33,24 +36,44 @@ puts "
 puts "                                      JULIE GILES                                         ".colorize(:color => :red, :background => :white)
 
 print "\n+=========================================================================================+ \n"
+prompt = TTY::Prompt.new 
+name = prompt.ask('What\'s your name???'.red, default: 'Player')
+name = name.chomp.strip
 
-    puts "\n What\'s your name?".red
+
 print "\n+=========================================================================================+ \n"
-    Player_name = gets.chomp.strip
+    
 
 begin 
     
-    print "\n#{Player_name}, select an option by entering its number:
-    \n".red
-    print "\n 1 - Read the rules".red
-    print "\n 2 - Play now".red
-    print "\n 3 - Quit game
-    \n".red
-    input = gets.chomp.downcase.strip.split(' ')
-    command, params = input
-    dispatch command, params
+    # print "\n #{name}, select an option by entering its number:
+    # \n".red
 
-end until ['3', '2', 'q'].include? command
+choices = [
+    {name: '1 - Read the rules'.red, value: 1},
+    {name: '2 - Play now'.red, value: 2},
+    {name: '3 - Exit'.red, value: 3}
+]
+
+selection = prompt.select("\n #{name}, select an option below! \n".red, choices)
+    case selection 
+        when 1
+            ::Views::Rules.print_rules
+        when 2
+            ::Draw.draw_cards
+        when 3
+            puts "\n You have quit the game.
+            \n"
+            ::Views::End.print_end
+    end 
+
+# dispatch selection
+
+    # input = gets.chomp.downcase.strip.split(' ')
+    # command, params = input
+    # dispatch command, params
+
+end until [3, 2, 'q'].include? selection
 
 
 

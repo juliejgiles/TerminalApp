@@ -29,7 +29,7 @@ module Animations
 
 
 
-        
+
         
         
         
@@ -44,7 +44,7 @@ module Animations
         
         
         
-        print `clear`, "
+        # print `clear`, "
           
           
 
@@ -54,7 +54,8 @@ module Animations
 
 
           
-          ", n 
+        #   ", n 
+        print n
         sleep(0.5)
       end 
         print "\n"
