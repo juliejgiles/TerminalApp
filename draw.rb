@@ -1,5 +1,4 @@
 require_relative './controllers/controller.rb'
-require_relative './dispatch.rb'
 require_relative './models/deck.rb'
 require_relative './models/card.rb'
 require_relative './views/animation.rb'
@@ -76,7 +75,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
 
      ::Player_two_cards.draw_player_two_cards
 
-        print "\n Select an option by entering a number below: 
+        print "\n Select an option by entering a number below and press Enter: 
         \n".red
         print "\n 1 - fold (new cards will be re-dealt)".red
         print "\n 2 - check".red
@@ -93,7 +92,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                 ::Gamecontroller.play
             when '2'
                 ::Deal_flop.deal_flop     
-                print "\n Select an option by entering a number below: 
+                print "\n Select an option by entering a number below and press Enter: 
         \n".red
         print "\n 1 - fold".red
         print "\n 2 - check".red
@@ -109,7 +108,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                     when '2'
                         ::Reveal_turn_river.reveal_turn_river
                
-                        print "\n Select an option by entering a number below: 
+                        print "\n Select an option by entering a number below and press Enter: 
                         \n".red
                         print "\n 1 - reveal cards!".red
                         print "\n 2 - quit game
@@ -320,15 +319,24 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                             print "\n YOU LOSE!
                                             \n".red.bold
                                                 ::Views::Animations.animation_player(Lose1)
-                                                puts art.asciify('YOU LOSE!')  
+                                                print "
+                                            
+                                                "
+puts art.asciify('YOU LOSE!')  
                                                 ::Views::End.print_end
 
                                         elsif player_rank < dealer_rank
-                                            puts art.asciify('YOU WIN!')
+                                            print "
+
+                                            "
+puts art.asciify('YOU WIN!')
                                                 ::Views::End.print_end
                                      
                                         elsif player_rank == dealer_rank
-                                            puts art.asciify('It is a TIE!')
+                                            print "
+                                            
+                                            "
+puts art.asciify('It is a TIE!')
                                                 ::Views::End.print_end
                                         end 
 

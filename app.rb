@@ -9,9 +9,9 @@ require 'tty-prompt'
 require 'artii'
 require 'ruby2d'
 
-
+song = Music.new('music.mp3')
+song.play
 print "\n +========================================================================================+ \n"
-
 puts "
 
                           ██████╗░░█████╗░██╗░░██╗███████╗██████╗░
@@ -29,10 +29,7 @@ puts "
         ░█──░█ ░█─░█ ░█─── ▄█▄ ░█─░█ 　 ──▀▄▀─ ░█▄▄▄ ░█─░█ ░█▄▄▄█ ▄█▄ ░█▄▄▄█ ░█──▀█
 
 ".red
-
-                                                                                                                                                                                                                                                                              
-
-                                                                           
+                                                                         
 
 puts "                                      JULIE GILES                                         ".colorize(:color => :red, :background => :white)
 
