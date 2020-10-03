@@ -1,12 +1,6 @@
 
 require_relative '../views/rules.rb'
-require_relative '../draw.rb'
-# require_relative '../views/deal_flop.rb'
-# require_relative '../views/player_two_cards.rb'
-# require_relative '../views/reveal_all_cards.rb'
-# require_relative '../views/reveal_turn_river.rb'
-# require_relative '../views/end.rb'
-
+require_relative '../draw'
 
 module Gamecontroller 
    

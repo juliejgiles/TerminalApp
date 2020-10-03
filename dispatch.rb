@@ -1,6 +1,6 @@
-# require_relative './controllers/controller.rb'
+
 # require_relative './draw.rb'
-# include Draw
+
 
 # def dispatch(cmd, params = nil)
 

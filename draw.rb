@@ -16,35 +16,35 @@ module Draw
 attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, :z
 
     def self.draw_cards
-        card1 = Deck.new.draw
-        card2 = Deck.new.draw
-        card3 = Deck.new.draw
-        card4 = Deck.new.draw
-        card5 = Deck.new.draw
-        card6 = Deck.new.draw
-        card7 = Deck.new.draw
-        card8 = Deck.new.draw
-        card9 = Deck.new.draw
-   
-        $a = card1.value
-        $b = card2.value
-        $c = card3.value
-        $d = card4.value
-        $e = card5.value
-        $f = card6.value
-        $g = card7.value
-        $h = card8.value
-        $i = card9.value  
+        $card1 = $Deck[0]
+        $card2 = $Deck[1]
+        $card3 = $Deck[2]
+        $card4 = $Deck[3]
+        $card5 = $Deck[4]
+        $card6 = $Deck[5]
+        $card7 = $Deck[6]
+        $card8 = $Deck[7]
+        $card9 = $Deck[8]
 
-        $r = card1.suit
-        $s = card2.suit
-        $t = card3.suit
-        $u = card4.suit
-        $v = card5.suit
-        $w = card6.suit
-        $x = card7.suit
-        $y = card8.suit
-        $z = card9.suit
+        $a = $card1.value
+        $b = $card2.value
+        $c = $card3.value
+        $d = $card4.value
+        $e = $card5.value
+        $f = $card6.value
+        $g = $card7.value
+        $h = $card8.value
+        $i = $card9.value  
+
+        $r = $card1.suit
+        $s = $card2.suit
+        $t = $card3.suit
+        $u = $card4.suit
+        $v = $card5.suit
+        $w = $card6.suit
+        $x = $card7.suit
+        $y = $card8.suit
+        $z = $card9.suit
 
 #For the purposes of representing the cards visually, the numbers are converted to A,J,Q,K if they are drawn
         arr = [$a,$b,$c,$d,$e,$f,$g,$h,$i]
@@ -75,9 +75,9 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
 
      ::Player_two_cards.draw_player_two_cards
 
-        print "\n Select an option using the number below: 
+        print "\n Select an option by entering a number below: 
         \n".red
-        print "\n 1 - fold".red
+        print "\n 1 - fold (new cards will be re-dealt)".red
         print "\n 2 - check".red
         print "\n 3 - quit game
         \n".red
@@ -87,12 +87,12 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
 
         case command 
             when '1'
-                puts "\n You have chosen to fold in this round. 
+                puts "\n You have chosen to fold in this round. New cards will be re-dealt to you.
                 \n".red
+                ::Gamecontroller.play
             when '2'
                 ::Deal_flop.deal_flop     
-        
-                print "\n Select an option using the number below: 
+                print "\n Select an option by entering a number below: 
         \n".red
         print "\n 1 - fold".red
         print "\n 2 - check".red
@@ -105,11 +105,10 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                     when '1'
                         puts "\n You have chosen to fold in this round. 
                                         \n".red
-
                     when '2'
                         ::Reveal_turn_river.reveal_turn_river
                
-                        print "\n Select an option using the number below: 
+                        print "\n Select an option by entering a number below: 
                         \n".red
                         print "\n 1 - reveal cards!".red
                         print "\n 2 - quit game
@@ -129,10 +128,14 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                     dealer_card_number = []
                                     player_card_suits = []
                                     dealer_card_suits = []
+                                    player_two_cards = []
+                                    dealer_two_cards = []
                                     player_rank = 0
                                     dealer_rank = 0
-                                    player_hand << card1 << card2 << card3 << card4 << card5 << card6 << card7
-                                    dealer_hand << card8 << card9 << card3 << card4 << card5 << card6 << card7
+                                    player_hand << $card1 << $card2 << $card3 << $card4 << $card5 << $card6 << $card7
+                                    dealer_hand << $card8 << $card9 << $card3 << $card4 << $card5 << $card6 << $card7
+                                    player_two_cards << $card1 << $card2
+                                    dealer_two_cards << $card8 << $card9
                                                  
                                     order = [ [ '', ''],
                                     [2, :♦],   [2, :♣],  [2, :♥],  [2, :♠],
@@ -161,23 +164,17 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                     
                                     player_scores << player_card_1  << player_card_2 << player_card_3 << player_card_4  << player_card_5  << player_card_6  << player_card_7
                                    
-                                    #Storing card values only for certain comparisons  
+                                    #Storing only card values to carry out certain combination comparisons later on
                                     player_card_number << player_hand[0].value << player_hand[1].value << player_hand[2].value << player_hand[3].value  << player_hand[4].value << player_hand[5].value << player_hand[6].value
-                            
                                     player_card_number = player_card_number.compact.sort
-                             
                                     dealer_card_number << dealer_hand[0].value << dealer_hand[1].value << dealer_hand[2].value << dealer_hand[3].value  << dealer_hand[4].value << dealer_hand[5].value << dealer_hand[6].value
-  
                                     dealer_card_number = dealer_card_number.compact.sort
                                   
-                                    #Storing only card suit values for certain comparisons  
-
+                                    #Storing only card suit values for certain combination comparisons later on
                                     player_card_suits << player_hand[0].suit << player_hand[1].suit << player_hand[2].suit << player_hand[3].suit << player_hand[4].suit << player_hand[5].suit << player_hand[6].suit
-                                    
                                     dealer_card_suits << dealer_hand[0].suit << dealer_hand[1].suit << dealer_hand[2].suit << dealer_hand[3].suit << dealer_hand[4].suit << dealer_hand[5].suit << dealer_hand[6].suit
                                     
                                     #CALCULATING DEALER'S SCORES
-                                    
                                     card_1 = (order.index([dealer_hand[0].value, dealer_hand[0].suit]))
                                     card_2 = (order.index([dealer_hand[1].value, dealer_hand[1].suit]))
                                     card_3 = (order.index([dealer_hand[2].value, dealer_hand[2].suit]))
@@ -187,7 +184,6 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                     card_7 = (order.index([dealer_hand[6].value, dealer_hand[6].suit])) 
                                   
                                     dealer_scores << card_1  << card_2 << card_3 << card_4  << card_5  << card_6  << card_7 
-
                                     dealer_scores = dealer_scores.compact.sort
 
                                         #DETECTING COMBOS FOR PLAYER
@@ -212,7 +208,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                                 player_rank = 3
                                             
                                             #checking for full house 
-                                            elsif (player_card_number.combination(3).find {|a,b,c| a+b+c ==a*3} ) && (player_card_number.combination(2).find {|a,b| a+b ==a*2} )
+                                            elsif ((player_card_number.combination(3).find {|a,b,c| a+b+c ==a*3} ) && (player_card_number.combination(2).find {|a,b| a+b ==a*2} ))
                                                 print "\n You have a full house
                                                 \n".red
                                                 player_rank = 4
@@ -223,11 +219,11 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                                 \n".red
                                                 player_rank = 5
 
-                                            # checking for straight
-                                            # elsif player_card_number.each_cons(5).find {|a| a[1] - a[0] == 4}
-                                            #     print "\n You have a straight
-                                            #     \n".red
-                                            #     player_rank = 6
+                                            # checking for straight 
+                                            elsif player_card_number.each_cons(5).find {|a| ((a[1] - a[0] == 1) && (a[2] - a[1] == 1) && (a[3] - a[2] == 1) && (a[4] - a[3] == 1)) }
+                                                print "\n You have a straight
+                                                \n".red
+                                                player_rank = 6
 
                                             #checking for three of a kind
                                             elsif player_card_number.combination(3).find {|a,b,c| a+b+c == a* 3}
@@ -247,6 +243,9 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                             \n".red
                                             player_rank = 9
 
+                                            #  else  print "\n You don't have a combo, and your highest card is #{player_two_cards.max}
+                                            #     \n".red 
+                                            # player_rank = 10
                                     end 
 
                                  #DETECTING COMBOS FOR DEALER
@@ -271,7 +270,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                                     dealer_rank = 3
                                                 
                                                 #checking for full house 
-                                                elsif (dealer_card_number.combination(3).find {|a,b,c| a+b+c ==a*3} ) && (dealer_card_number.combination(2).find {|a,b| a+b ==a*2} )
+                                                elsif ((dealer_card_number.combination(3).find {|a,b,c| a+b+c ==a*3} ) && (dealer_card_number.combination(2).find {|a,b| a+b ==a*2} ))
                                                     print "\n Dealer has a full house
                                                     \n".red
                                                     dealer_rank = 4
@@ -282,11 +281,11 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                                     \n".red
                                                     dealer_rank = 5
     
-                                                #checking for straight
-                                                # elsif dealer_card_number.each_cons(5).find {|a| a[1] - a[0] == 4}
-                                                #     print "\n Dealer has a straight
-                                                #     \n".red
-                                                #     dealer_rank = 6
+                                                #checking for straight  
+                                                elsif dealer_card_number.each_cons(5).find {|a| ((a[1] - a[0] == 1) && (a[2] - a[1] == 1) && (a[3] - a[2] == 1) && (a[4] - a[3] == 1)) }    
+                                                print "\n Dealer has a straight
+                                                    \n".red
+                                                    dealer_rank = 6
     
                                                 #checking for three of a kind
                                                 elsif dealer_card_number.combination(3).find {|a,b,c| a+b+c == a* 3}
@@ -305,13 +304,16 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                                 print "\n Dealer has a pair
                                                 \n".red
                                                 dealer_rank = 9
+
+                                                # else  print "\n Dealer doesn't have a combo, and their highest card is #{dealer_two_cards.max}
+                                                # \n".red 
+                                                # dealer_rank = 10
                                         end 
 
                                         sleep 3
                                         if dealer_rank < player_rank
                                             print "\n YOU LOSE!
-                                                \n".red.bold
-                                                            
+                                                \n".red.bold           
                                                 ::Views::Animations.animation_player(Lose1)
                                                 print "\n YOU LOSE!
                                                 \n".red.bold
@@ -333,11 +335,13 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                             when '2'
                                 puts "\n You have chosen to quit the game. 
                                 \n".red
+                                ::Gamecontroller.end_game
                             end 
 
                     when '3'
                         puts "\n You have chosen to quit the game. 
                         \n".red
+                        ::Gamecontroller.end_game
                     else
                         p input2
                  end 

@@ -441,15 +441,25 @@ module Animations
 
     def self.animation_player(string)
       string.each do |n|
-        print `clear`
+        print "
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        "
+        
         print n
-        sleep(0.5)
+        sleep 0.3
+        print `clear`
       end 
-        print "\n"
+        
     end
-
-# animation_player()
-
-
 end 
 end 
