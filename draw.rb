@@ -83,14 +83,17 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
         command, params = input 
   
         #Error validation method for inputs from the user to ensure user does not put in empty space or an invalid selection
-        
+        begin
         def self.validate_input(i)
-            raise ArgumentError, "Please insert a number as listed - you have not entered a number" if i.empty?
-            raise ArgumentError, "You have entered a number that's not a valid option" if ((i.to_i >3)|| (i.to_i <=0))
+            raise ArgumentError, "Please insert a number as listed - you have not entered a number" if i.nil?
+            raise ArgumentError, "The option you entered is not valid" if ((i.to_i >3)|| (i.to_i <=0))
             i 
         end 
 
         validate_input(command)
+    rescue ArgumentError 
+        puts "You have entered an invalid option, please try again"
+    end 
         
         case command 
             when '1'
@@ -101,7 +104,12 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                 ::Deal_flop.deal_flop     
                 ::Gamecontroller.request_selection 
             input2 = gets.chomp.downcase.strip
+
+        begin
             validate_input(input2)
+        rescue ArgumentError 
+            puts "You have entered an invalid option, please try again"
+        end 
                 case input2 
                     when '1'
                         puts "\n You have chosen to fold in this round. 
@@ -112,8 +120,13 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                         ::Gamecontroller.request_selection
 
                         input3 = gets.chomp.downcase.strip
-                        validate_input(input3)
 
+                    begin 
+                        validate_input(input3)
+                    rescue ArgumentError 
+                        puts "You have entered an invalid option, please try again"
+                    end 
+                      
                             case input3 
                             when '1'
                                 puts "\n You have chosen to fold in this round. 
