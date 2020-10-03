@@ -3,6 +3,7 @@ require 'colorize'
 require 'colorized_string'
 require 'tty-prompt'
 
+#Prints out rules of the game if the user selects that option
 module Views 
     module Rules
         def self.print_rules

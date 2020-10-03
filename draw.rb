@@ -11,7 +11,8 @@ require 'artii'
 include Views
 include Animations
 
-#Assigns the last 9 items in the @cards array to the below variables, which stays the same during a game
+#Assigns the first 9 items in the $Deck constant array to the below variables, so that the card values and suits stay the same for the game 
+#(no 2 cards are drawn twice in a game)
 module Draw
 attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, :z
 
@@ -73,8 +74,8 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
      $h = arr2[7]
      $i = arr2[8]
 
+     #Two cards are dealt to the player and they are given the option to check, fold or quit the game
      ::Player_two_cards.draw_player_two_cards
-
         print "\n Select an option by entering a number below and press Enter: 
         \n".red
         print "\n 1 - fold (new cards will be re-dealt)".red
@@ -100,7 +101,6 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
         \n".red
 
         input2 = gets.chomp.downcase.strip
-        
                 case input2 
                     when '1'
                         puts "\n You have chosen to fold in this round. 
@@ -322,21 +322,21 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                                 print "
                                             
                                                 "
-puts art.asciify('YOU LOSE!')  
+                                                puts art.asciify('YOU LOSE!')  
                                                 ::Views::End.print_end
 
                                         elsif player_rank < dealer_rank
                                             print "
 
                                             "
-puts art.asciify('YOU WIN!')
+                                            puts art.asciify('YOU WIN!')
                                                 ::Views::End.print_end
                                      
                                         elsif player_rank == dealer_rank
                                             print "
                                             
                                             "
-puts art.asciify('It is a TIE!')
+                                            puts art.asciify('It is a TIE!')
                                                 ::Views::End.print_end
                                         end 
 
@@ -351,7 +351,7 @@ puts art.asciify('It is a TIE!')
                         \n".red
                         ::Gamecontroller.end_game
                     else
-                        p input2
+                        puts "You have selected #{input2} which is not a valid option"
                  end 
                 end
     

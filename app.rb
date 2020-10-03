@@ -9,6 +9,7 @@ require 'tty-prompt'
 require 'artii'
 require 'ruby2d'
 
+#plays background music
 song = Music.new('music.mp3')
 song.play
 print "\n +========================================================================================+ \n"
@@ -38,22 +39,18 @@ prompt = TTY::Prompt.new
 name = prompt.ask('What\'s your name???'.red, default: 'Player')
 name = name.chomp.strip
 
-
 print "\n+=========================================================================================+ \n"
-    
-
+#Main menu selection options using TTY prompt gem
 begin 
 choices = [
     {name: '1 - Read the rules'.red, value: 1},
     {name: '2 - Play now'.red, value: 2},
     {name: '3 - Exit'.red, value: 3}
 ]
-
 selection = prompt.select("\n #{name}, select an option below! \n".red, choices)
     case selection 
         when 1
             ::Gamecontroller.show
-           
         when 2
             ::Gamecontroller.play
         when 3
@@ -61,7 +58,6 @@ selection = prompt.select("\n #{name}, select an option below! \n".red, choices)
             \n"
             ::Gamecontroller.end_game
     end 
-
 end until [3, 2, 'q'].include? selection
 
 

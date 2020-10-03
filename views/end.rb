@@ -1,5 +1,5 @@
 require_relative '../controllers/controller.rb'
-
+#The end banner to signal the end of the game
 module Views 
     module End
         def print_end

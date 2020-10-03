@@ -1,8 +1,8 @@
+#Animation sequence of a finger being cut off, which is played if the player loses the game.
 module Views
 module Animations
 
     Lose1 = 
-    
      ["
      
 
