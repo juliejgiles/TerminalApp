@@ -5,6 +5,8 @@ require_relative './views/animation.rb'
 require_relative './views/end.rb'
 require_relative './views/player_two_cards.rb'
 require_relative './views/deal_flop.rb'
+require_relative './views/reveal_turn_river.rb'
+require_relative './views/reveal_all_cards.rb'
 include Views
 include Animations
 
@@ -87,23 +89,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                 puts "\n You have chosen to fold in this round. 
                 \n".red
             when '2'
-
-        ::Deal_flop.deal_flop
-
-        #         print "\n The Flop has been dealt by the dealer: \n".red
-                
-        # print "\n
-        # ┌────────────┐         ┌────────────┐         ┌────────────┐        ┌────────────┐        ┌────────────┐
-        # │#{c}           |         │#{d}           |         │#{e}           |        │░░░░░░░░░░░░|        │░░░░░░░░░░░░|
-        # │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
-        # │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
-        # │     #{t}      │         │     #{u}      │         │     #{v}      │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
-        # │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
-        # │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
-        # │           #{c}│         │           #{d}│         │           #{e}│        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
-        # └────────────┘         └────────────┘         └────────────┘        └────────────┘        └────────────┘
-        # "
-            
+                ::Deal_flop.deal_flop     
         print "\n Select an option using the number below: 
         \n".red
         print "\n 1 - fold".red
@@ -121,22 +107,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                         \n".red
 
                     when '2'
-
-                        puts "\n The Turn and River have now been dealt: 
-                        \n".red
-
-        print "\n
-
-        ┌────────────┐         ┌────────────┐         ┌────────────┐        ┌────────────┐        ┌────────────┐
-        │#{c}           |         │#{d}           |         │#{e}           |        │#{f}           |        │#{g}           |
-        │            │         │            │         │            │        │            │        │            │
-        │            │         │            │         │            │        │            │        │            │
-        │     #{t}      │         │     #{u}      │         │     #{v}      │        │      #{w}     │        │      #{x}     │
-        │            │         │            │         │            │        │            │        │            │
-        │            │         │            │         │            │        │            │        │            │
-        │           #{c}│         │           #{d}│         │           #{e}│        │           #{f}│        │           #{g}│
-        └────────────┘         └────────────┘         └────────────┘        └────────────┘        └────────────┘
-                    "
+                        ::Reveal_turn_river.reveal_turn_river
                
                         print "\n Select an option using the number below: 
                         \n".red
@@ -148,33 +119,8 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
 
                             case input3 
                             when '1'
-                                print "\n The dealer's cards are: \n".red
-                                print "\n
-                                ┌────────────┐         ┌────────────┐         
-                                │#{h}           |         │#{i}           |         
-                                │            │         │            │         
-                                │            │         │            │        
-                                │     #{y}      │         │     #{z}      │         
-                                │            │         │            │         
-                                │            │         │            │         
-                                │           #{h}│         │           #{i}│         
-                                └────────────┘         └────────────┘         
-                                "
+                                ::Reveal_all_cards.reveal_all_cards
                             
-                                print "\n And your cards were: \n".red
-                                print "\n
-                                ┌────────────┐         ┌────────────┐         
-                                │#{a}           |         │#{b}           |         
-                                │            │         │            │         
-                                │            │         │            │        
-                                │     #{r}      │         │     #{s}      │         
-                                │            │         │            │         
-                                │            │         │            │         
-                                │           #{a}│         │           #{b}│         
-                                └────────────┘         └────────────┘         
-                                "
-
-
                                     player_hand = []
                                     dealer_hand = []
                                     player_scores = []
@@ -215,9 +161,6 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                     
                                     player_scores << player_card_1  << player_card_2 << player_card_3 << player_card_4  << player_card_5  << player_card_6  << player_card_7
                                    
-                                    
-                                    # player_scores = player_scores.sort
-
                                     #Storing card values only for certain comparisons  
                                     player_card_number << player_hand[0].value << player_hand[1].value << player_hand[2].value << player_hand[3].value  << player_hand[4].value << player_hand[5].value << player_hand[6].value
                             
@@ -247,7 +190,6 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
 
                                     dealer_scores = dealer_scores.compact.sort
 
-                            
                                         #DETECTING COMBOS FOR PLAYER
 
                                         #Checking for royal flush
@@ -368,21 +310,21 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                         sleep 3
                                         if dealer_rank < player_rank
                                             print "\n YOU LOSE!
-                                                \n".red
+                                                \n".red.bold
                                                             
                                                 ::Views::Animations.animation_player(Lose1)
                                                 print "\n YOU LOSE!
-                                                \n".red
+                                                \n".red.bold
                                                 ::Views::End.print_end
 
                                         elsif player_rank < dealer_rank
                                             print "\n YOU WIN!
-                                                \n".red
+                                                \n".red.bold
                                                 ::Views::End.print_end
                                      
                                         elsif player_rank == dealer_rank
                                             print "\n It's a TIE!
-                                                \n".red
+                                                \n".red.bold
                                                 ::Views::End.print_end
 
                                         end 
