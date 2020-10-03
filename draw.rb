@@ -77,11 +77,11 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
      #Two cards are dealt to the player and they are given the option to check, fold or quit the game
      ::Player_two_cards.draw_player_two_cards
         print "\n Select an option by entering a number below and press Enter: 
-        \n".red
-        print "\n 1 - fold (new cards will be re-dealt)".red
-        print "\n 2 - check".red
+        \n".bold.colorize(:color => :red, :background => :white)
+        print "\n 1 - fold (new cards will be re-dealt)".bold.colorize(:color => :red, :background => :white)
+        print "\n 2 - check".bold.colorize(:color => :red, :background => :white)
         print "\n 3 - quit game
-        \n".red
+        \n".bold.colorize(:color => :red, :background => :white)
 
         input = gets.chomp.downcase.strip.split(' ')
         command, params = input 
@@ -89,30 +89,30 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
         case command 
             when '1'
                 puts "\n You have chosen to fold in this round. New cards will be re-dealt to you.
-                \n".red
+                \n".bold.colorize(:color => :red, :background => :white)
                 ::Gamecontroller.play
             when '2'
                 ::Deal_flop.deal_flop     
                 print "\n Select an option by entering a number below and press Enter: 
-        \n".red
-        print "\n 1 - fold".red
-        print "\n 2 - check".red
+        \n".bold.colorize(:color => :red, :background => :white)
+        print "\n 1 - fold".bold.colorize(:color => :red, :background => :white)
+        print "\n 2 - check".bold.colorize(:color => :red, :background => :white)
         print "\n 3 - quit game
-        \n".red
+        \n".bold.colorize(:color => :red, :background => :white)
 
         input2 = gets.chomp.downcase.strip
                 case input2 
                     when '1'
-                        puts "\n You have chosen to fold in this round. 
-                                        \n".red
+                        puts "\n You have chosen to fold in this round. New cards will be re-dealt to you. 
+                        \n".bold.colorize(:color => :black, :background => :red)
+                        ::Gamecontroller.play
                     when '2'
                         ::Reveal_turn_river.reveal_turn_river
-               
                         print "\n Select an option by entering a number below and press Enter: 
-                        \n".red
-                        print "\n 1 - reveal cards!".red
+                        \n".bold.colorize(:color => :red, :background => :white)
+                        print "\n 1 - reveal cards!".bold.colorize(:color => :red, :background => :white)
                         print "\n 2 - quit game
-                        \n".red
+                        \n".bold.colorize(:color => :red, :background => :white)
 
                         input3 = gets.chomp.downcase.strip
 
@@ -192,61 +192,58 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                     if player_scores.compact.combination(5).find {|a,b,c,d,e| a+b+c+d+e == 205 || a+b+c+d+e == 210 || a+b+c+d+e == 215 || a+b+c+d+e == 220}
                                     
                                     print "\n You have a royal flush
-                                        \n".red
+                                        \n".bold.colorize(:color => :red, :background => :white)
                                         player_rank = 1
                                             
                                             #checking for straight flush 
                                             elsif (player_card_number.each_cons(5).find {|a| a[1] - a[0] == 4}) && (player_card_suits.combination(5).find{|a,b,c,d,e| (a==b) && (b==c) && (c==d) && (d==e)})
                                                 print "\n You have a straight flush
-                                                \n".red
+                                                \n".bold.colorize(:color => :red, :background => :white)
                                                 player_rank = 2
                                         
                                             #checking for four of a kind
                                             elsif player_card_number.combination(4).find {|a,b,c,d| a+b+c+d == a* 4}
                                                 print "\n You have four of a kind
-                                                \n".red
+                                                \n".bold.colorize(:color => :red, :background => :white)
                                                 player_rank = 3
                                             
                                             #checking for full house 
                                             elsif ((player_card_number.combination(3).find {|a,b,c| a+b+c ==a*3} ) && (player_card_number.combination(2).find {|a,b| a+b ==a*2} ))
                                                 print "\n You have a full house
-                                                \n".red
+                                                \n".bold.colorize(:color => :red, :background => :white)
                                                 player_rank = 4
                                             
                                             #checking for flush
                                             elsif player_card_suits.combination(5).find{|a,b,c,d,e| (a==b) && (b==c) && (c==d) && (d==e)}
                                                 print "\n You have a flush
-                                                \n".red
+                                                \n".bold.colorize(:color => :red, :background => :white)
                                                 player_rank = 5
 
                                             # checking for straight 
                                             elsif player_card_number.each_cons(5).find {|a| ((a[1] - a[0] == 1) && (a[2] - a[1] == 1) &&
                                                   (a[3] - a[2] == 1) && (a[4] - a[3] == 1)) }
                                                 print "\n You have a straight
-                                                \n".red
+                                                \n".bold.colorize(:color => :red, :background => :white)
                                                 player_rank = 6
 
                                             #checking for three of a kind
                                             elsif player_card_number.combination(3).find {|a,b,c| a+b+c == a* 3}
                                             print "\n You have three of a kind
-                                            \n".red
+                                            \n".bold.colorize(:color => :red, :background => :white)
                                             player_rank = 7
 
                                             #checking for two pairs
                                             elsif player_card_number.combination(4).find {|a,b,c,d| (a+b == a* 2) && (c+d == c*2)}
                                             print "\n You have two pairs
-                                            \n".red
+                                            \n".bold.colorize(:color => :red, :background => :white)
                                             player_rank = 8
 
                                             #checking for 1 pair
                                             elsif player_card_number.combination(2).find {|a,b| a+b == a* 2}
                                             print "\n You have a pair
-                                            \n".red
+                                            \n".bold.colorize(:color => :red, :background => :white)
                                             player_rank = 9
 
-                                            #  else  print "\n You don't have a combo, and your highest card is #{player_two_cards.max}
-                                            #     \n".red 
-                                            # player_rank = 10
                                     end 
 
                                  #DETECTING COMBOS FOR DEALER
@@ -255,60 +252,57 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                         if dealer_scores.compact.combination(5).find {|a,b,c,d,e| a+b+c+d+e == 205 || a+b+c+d+e == 210 || a+b+c+d+e == 215 || a+b+c+d+e == 220}
                                     
                                         print "\n Dealer has a royal flush
-                                            \n".red
+                                            \n".bold.colorize(:color => :red, :background => :white)
                                             dealer_rank = 1
                                                 
                                                 #checking for straight flush 
                                                 elsif (dealer_card_number.each_cons(5).find {|a| a[1] - a[0] == 4}) && (dealer_card_suits.combination(5).find{|a,b,c,d,e| (a==b) && (b==c) && (c==d) && (d==e)})
                                                     print "\n Dealer has a straight flush
-                                                    \n".red
+                                                    \n".bold.colorize(:color => :red, :background => :white)
                                                     dealer_rank = 2
                                             
                                                 #checking for four of a kind
                                                 elsif dealer_card_number.combination(4).find {|a,b,c,d| a+b+c+d == a* 4}
                                                     print "\n Dealer has four of a kind
-                                                    \n".red
+                                                    \n".bold.colorize(:color => :red, :background => :white)
                                                     dealer_rank = 3
                                                 
                                                 #checking for full house 
                                                 elsif ((dealer_card_number.combination(3).find {|a,b,c| a+b+c ==a*3} ) && (dealer_card_number.combination(2).find {|a,b| a+b ==a*2} ))
                                                     print "\n Dealer has a full house
-                                                    \n".red
+                                                    \n".bold.colorize(:color => :red, :background => :white)
                                                     dealer_rank = 4
                                                 
                                                 #checking for flush
                                                 elsif dealer_card_suits.combination(5).find{|a,b,c,d,e| (a==b) && (b==c) && (c==d) && (d==e)}
                                                     print "\n Dealer has a flush
-                                                    \n".red
+                                                    \n".bold.colorize(:color => :red, :background => :white)
                                                     dealer_rank = 5
     
                                                 #checking for straight  
                                                 elsif dealer_card_number.each_cons(5).find {|a| ((a[1] - a[0] == 1) && (a[2] - a[1] == 1) && (a[3] - a[2] == 1) && (a[4] - a[3] == 1)) }    
                                                 print "\n Dealer has a straight
-                                                    \n".red
+                                                    \n".bold.colorize(:color => :red, :background => :white)
                                                     dealer_rank = 6
     
                                                 #checking for three of a kind
                                                 elsif dealer_card_number.combination(3).find {|a,b,c| a+b+c == a* 3}
                                                 print "\n Dealer has three of a kind
-                                                \n".red
+                                                \n".bold.colorize(:color => :red, :background => :white)
                                                 dealer_rank = 7
     
                                                 #checking for two pairs
                                                 elsif dealer_card_number.combination(4).find {|a,b,c,d| (a+b == a* 2) && (c+d == c*2)}
                                                 print "\n Dealer has two pairs
-                                                \n".red
+                                                \n".bold.colorize(:color => :red, :background => :white)
                                                 dealer_rank = 8
     
                                                 #checking for 1 pair
                                                 elsif dealer_card_number.combination(2).find {|a,b| a+b == a* 2}
                                                 print "\n Dealer has a pair
-                                                \n".red
+                                                \n".bold.colorize(:color => :red, :background => :white)
                                                 dealer_rank = 9
 
-                                                # else  print "\n Dealer doesn't have a combo, and their highest card is #{dealer_two_cards.max}
-                                                # \n".red 
-                                                # dealer_rank = 10
                                         end 
 
                                         sleep 1
@@ -342,13 +336,13 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
 
                             when '2'
                                 puts "\n You have chosen to quit the game. 
-                                \n".red
+                                \n".bold.red
                                 ::Gamecontroller.end_game
                             end 
 
                     when '3'
                         puts "\n You have chosen to quit the game. 
-                        \n".red
+                        \n".bold.red
                         ::Gamecontroller.end_game
                     else
                         puts "You have selected #{input2} which is not a valid option"
