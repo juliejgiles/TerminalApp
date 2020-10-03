@@ -1,4 +1,5 @@
 require_relative '../draw.rb'
+require_relative '../controllers/controller.rb'
 
 module Reveal_turn_river
     def self.reveal_turn_river 

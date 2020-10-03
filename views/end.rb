@@ -1,4 +1,5 @@
 require_relative '../dispatch.rb'
+require_relative '../controllers/controller.rb'
 
 module Views 
     module End

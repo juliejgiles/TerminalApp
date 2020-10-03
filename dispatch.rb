@@ -1,16 +1,17 @@
-# require_relative 'controllers/controller.rb'
+# require_relative './controllers/controller.rb'
+# require_relative './draw.rb'
+# include Draw
 
 # def dispatch(cmd, params = nil)
+
 #     case cmd
 #     when '1'
-#     ::GameController.show
-        
+#     # ::GameController.fold
+#         p "folding"
 #     when '2'
-#     ::GameController.play
-
-#     when '3'
-#         puts "\n You have quit the game.
-#         \n"
+#     # ::GameController.deal_flop
+#     # ::GameController.display_option_second
+#         p 'flopping'
   
 #     else
 #         puts "\n Not a valid option, please try again. 

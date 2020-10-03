@@ -1,25 +1,34 @@
+
 require_relative '../views/rules.rb'
-require_relative '../models/deck.rb'
-require_relative '../models/card.rb'
 require_relative '../draw.rb'
-require_relative '../views/animation.rb'
+# require_relative '../views/deal_flop.rb'
+# require_relative '../views/player_two_cards.rb'
+# require_relative '../views/reveal_all_cards.rb'
+# require_relative '../views/reveal_turn_river.rb'
+# require_relative '../views/end.rb'
 
 
-module GameController 
-    def show 
+module Gamecontroller 
+   
+    def self.show 
         ::Views::Rules.print_rules
     end 
 
-    def play 
+    def self.fold 
+        puts "\n You have chosen to fold in this round. 
+        \n".red
+    end 
+
+    def self.deal_flop 
+        ::Deal_flop.deal_flop    
+    end 
+
+    def self.play 
         ::Draw.draw_cards
     end 
 
-    def end 
+    def self.end_game 
         ::Views::End.print_end
     end 
-
-    def play_five_cards 
-        ::Draw.play_five_cards
-    end 
-    module_function :show, :play, :end, :play_five_cards
-end 
+    
+end

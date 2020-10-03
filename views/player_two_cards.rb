@@ -1,4 +1,5 @@
 require_relative '../draw.rb'
+require_relative '../controllers/controller.rb'
 
 module Player_two_cards
     def self.draw_player_two_cards() 

@@ -1,4 +1,5 @@
 require_relative '../draw.rb'
+require_relative '../controllers/controller.rb'
 
 module Reveal_all_cards 
     def self.reveal_all_cards 

@@ -1,5 +1,5 @@
-require_relative 'dispatch'
-require_relative 'draw'
+require_relative 'controllers/controller.rb'
+require_relative './draw.rb'
 require_relative './views/animation.rb'
 require_relative './views/rules.rb'
 require_relative './views/end.rb'
@@ -53,20 +53,15 @@ choices = [
 selection = prompt.select("\n #{name}, select an option below! \n".red, choices)
     case selection 
         when 1
-            ::Views::Rules.print_rules
+            ::Gamecontroller.show
+           
         when 2
-            ::Draw.draw_cards
+            ::Gamecontroller.play
         when 3
             puts "\n You have quit the game.
             \n"
-            ::Views::End.print_end
+            ::Gamecontroller.end_game
     end 
-
-# dispatch selection
-
-    # input = gets.chomp.downcase.strip.split(' ')
-    # command, params = input
-    # dispatch command, params
 
 end until [3, 2, 'q'].include? selection
 

@@ -1,4 +1,5 @@
 require_relative './controllers/controller.rb'
+require_relative './dispatch.rb'
 require_relative './models/deck.rb'
 require_relative './models/card.rb'
 require_relative './views/animation.rb'
@@ -90,7 +91,8 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                 \n".red
             when '2'
                 ::Deal_flop.deal_flop     
-        print "\n Select an option using the number below: 
+        
+                print "\n Select an option using the number below: 
         \n".red
         print "\n 1 - fold".red
         print "\n 2 - check".red
@@ -98,8 +100,6 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
         \n".red
 
         input2 = gets.chomp.downcase.strip
-        # command2, params = input2 
-        # dispatch2 command2, params
         
                 case input2 
                     when '1'

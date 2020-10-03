@@ -1,3 +1,4 @@
+require_relative '../controllers/controller.rb'
 require_relative '../draw.rb'
 
 module Deal_flop
