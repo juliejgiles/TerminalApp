@@ -36,8 +36,19 @@ puts "                                                   JULIE GILES            
 
 print "\n +=================================================================================================================+ \n"
 prompt = TTY::Prompt.new 
-name = prompt.ask('What\'s your name???'.red, default: 'Player')
-$name = name.chomp.strip
+name = prompt.ask('What\'s your name???'.red)
+begin
+def validate_name(name)
+    name = name.chomp.strip
+    raise ArgumentError, "Name must not be empty" if name.empty?
+    name
+end 
+rescue ArgumentError => e 
+    puts "An error occured: #{e.inspect}"
+    retry 
+end
+
+$NAME = name
 
 print "\n +=================================================================================================================+ \n"
 #Main menu selection options using TTY prompt gem
@@ -47,7 +58,7 @@ choices = [
     {name: '2 - Play now'.red, value: 2},
     {name: '3 - Exit'.red, value: 3}
 ]
-selection = prompt.select("\n #{$name}, select an option below! \n".colorize(:color => :red, :background => :gray), choices)
+selection = prompt.select("\n #{$NAME}, select an option below! \n".colorize(:color => :red, :background => :gray), choices)
     case selection 
         when 1
             ::Gamecontroller.show
@@ -57,6 +68,7 @@ selection = prompt.select("\n #{$name}, select an option below! \n".colorize(:co
             puts "\n You have quit the game.".colorize(:color => :black, :background => :red)
             ::Gamecontroller.end_game
     end 
+
 end until [3, 2, 'q'].include? selection
 
 

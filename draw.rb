@@ -77,16 +77,21 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
 
      #Two cards are dealt to the player and they are given the option to check, fold or quit the game
      ::Player_two_cards.draw_player_two_cards
-        print "\n Select an option by entering a number below and press Enter: 
-        \n".bold.colorize(:color => :red, :background => :white)
-        print "\n 1 - fold".bold.colorize(:color => :red, :background => :white)
-        print "\n 2 - check".bold.colorize(:color => :red, :background => :white)
-        print "\n 3 - quit game
-        \n".bold.colorize(:color => :red, :background => :white)
+     ::Gamecontroller.request_selection
 
         input = gets.chomp.downcase.strip.split(' ')
         command, params = input 
+  
+        #Error validation method for inputs from the user to ensure user does not put in empty space or an invalid selection
+        
+        def self.validate_input(i)
+            raise ArgumentError, "Please insert a number as listed - you have not entered a number" if i.empty?
+            raise ArgumentError, "You have entered a number that's not a valid option" if ((i.to_i >3)|| (i.to_i <=0))
+            i 
+        end 
 
+        validate_input(command)
+        
         case command 
             when '1'
                 puts "\n You have chosen to fold in this round.
@@ -94,34 +99,29 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                 ::Gamecontroller.end_game
             when '2'
                 ::Deal_flop.deal_flop     
-                print "\n Select an option by entering a number below and press Enter: 
-                \n".bold.colorize(:color => :red, :background => :white)
-                print "\n 1 - fold".bold.colorize(:color => :red, :background => :white)
-                print "\n 2 - check".bold.colorize(:color => :red, :background => :white)
-                print "\n 3 - quit game
-                \n".bold.colorize(:color => :red, :background => :white)
-           
+                ::Gamecontroller.request_selection 
             input2 = gets.chomp.downcase.strip
+            validate_input(input2)
                 case input2 
                     when '1'
                         puts "\n You have chosen to fold in this round. 
                         \n".bold.colorize(:color => :black, :background => :red)
                         ::Gamecontroller.end_game
-                      
                     when '2'
                         ::Reveal_turn_river.reveal_turn_river
-                        print "\n Select an option by entering a number below and press Enter: 
-                        \n".bold.colorize(:color => :red, :background => :white)
-                        print "\n 1 - reveal cards!".bold.colorize(:color => :red, :background => :white)
-                        print "\n 2 - quit game
-                        \n".bold.colorize(:color => :red, :background => :white)
+                        ::Gamecontroller.request_selection
 
                         input3 = gets.chomp.downcase.strip
+                        validate_input(input3)
 
                             case input3 
                             when '1'
+                                puts "\n You have chosen to fold in this round. 
+                                \n".bold.colorize(:color => :black, :background => :red)
+                                ::Gamecontroller.end_game
+
+                            when '2'
                                 ::Reveal_all_cards.reveal_all_cards
-                            
                                     player_hand = []
                                     dealer_hand = []
                                     player_scores = []
@@ -344,8 +344,8 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                         #Write result of game and the player's name to file and shows list
                                         record = []
                                         begin
-                                        record << "#{$name} played the game at #{Time.now} and they #{outcome}."
-                                        File.open('players.yml', 'a'){|file| file.write(record.to_yaml)}
+                                        record << "#{$NAME} played the game at #{Time.now} and they #{outcome}."
+                                        File.open('players.yml', 'w'){|file| file.write(record.to_yaml)}
                                             rescue ArgumentError => e 
                                                 puts "Could not parse YAML: #{e.message}"
                                             end 
@@ -367,9 +367,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                         puts "\n You have chosen to quit the game. 
                         \n".bold.red
                         ::Gamecontroller.end_game
-                    else
-                        puts "You have selected #{input2} which is not a valid option"
-                        # retry
+                   
                  end 
                 end
                 

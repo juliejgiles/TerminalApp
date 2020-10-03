@@ -3,6 +3,7 @@ require_relative '../views/rules.rb'
 require_relative '../draw'
 require_relative '../views/end.rb'
 require_relative '../models/deck.rb'
+require_relative '../views/request_selection.rb'
 
 module Gamecontroller 
    
@@ -27,4 +28,7 @@ module Gamecontroller
         ::Views::End.print_end
     end 
     
+    def self.request_selection 
+        ::Views::Request_selection.request_selection
+    end 
 end
