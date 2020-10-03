@@ -14,3 +14,7 @@ gem "pastel", "~> 0.7.2"
 
 gem "ocra", "~> 1.3"
 gem "gem", "~> 0.0.1.alpha"
+
+gem "ruby2d", "~> 0.9.4"
+
+gem "artii", "~> 2.1"

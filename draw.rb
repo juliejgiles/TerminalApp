@@ -8,6 +8,7 @@ require_relative './views/player_two_cards.rb'
 require_relative './views/deal_flop.rb'
 require_relative './views/reveal_turn_river.rb'
 require_relative './views/reveal_all_cards.rb'
+require 'artii'
 include Views
 include Animations
 
@@ -220,7 +221,8 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                                 player_rank = 5
 
                                             # checking for straight 
-                                            elsif player_card_number.each_cons(5).find {|a| ((a[1] - a[0] == 1) && (a[2] - a[1] == 1) && (a[3] - a[2] == 1) && (a[4] - a[3] == 1)) }
+                                            elsif player_card_number.each_cons(5).find {|a| ((a[1] - a[0] == 1) && (a[2] - a[1] == 1) &&
+                                                  (a[3] - a[2] == 1) && (a[4] - a[3] == 1)) }
                                                 print "\n You have a straight
                                                 \n".red
                                                 player_rank = 6
@@ -310,27 +312,25 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                                 # dealer_rank = 10
                                         end 
 
-                                        sleep 3
+                                        sleep 1
+
+                                        art = Artii::Base.new 
+                                       
                                         if dealer_rank < player_rank
                                             print "\n YOU LOSE!
-                                                \n".red.bold           
+                                            \n".red.bold
                                                 ::Views::Animations.animation_player(Lose1)
-                                                print "\n YOU LOSE!
-                                                \n".red.bold
+                                                puts art.asciify('YOU LOSE!')  
                                                 ::Views::End.print_end
 
                                         elsif player_rank < dealer_rank
-                                            print "\n YOU WIN!
-                                                \n".red.bold
+                                            puts art.asciify('YOU WIN!')
                                                 ::Views::End.print_end
                                      
                                         elsif player_rank == dealer_rank
-                                            print "\n It's a TIE!
-                                                \n".red.bold
+                                            puts art.asciify('It is a TIE!')
                                                 ::Views::End.print_end
-
                                         end 
-
 
                             when '2'
                                 puts "\n You have chosen to quit the game. 

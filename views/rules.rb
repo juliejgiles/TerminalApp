@@ -24,6 +24,9 @@ module Views
                 print "\n 9) The Dealer's 2 cards will also be revealed." 
                 print "\n 10) The Player with the lower ranked combination loses the game and a finger. 
                 \n"
+
+                print "\n NOTE: any combos in the 5 dealt cards on the table counts towards the player's hand & the Dealer's hand. 
+                \n"
                 print "\n ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
                 \n".white
             print "+=================================================================================================================+"

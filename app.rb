@@ -6,6 +6,8 @@ require_relative './views/end.rb'
 require 'colorize'
 require 'colorized_string'
 require 'tty-prompt'
+require 'artii'
+require 'ruby2d'
 
 
 print "\n +========================================================================================+ \n"
