@@ -18,3 +18,5 @@ gem "gem", "~> 0.0.1.alpha"
 gem "ruby2d", "~> 0.9.4"
 
 gem "artii", "~> 2.1"
+
+gem "rspec", "~> 3.9"

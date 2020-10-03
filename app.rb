@@ -37,7 +37,7 @@ puts "                                                   JULIE GILES            
 print "\n +=================================================================================================================+ \n"
 prompt = TTY::Prompt.new 
 name = prompt.ask('What\'s your name???'.red, default: 'Player')
-name = name.chomp.strip
+$name = name.chomp.strip
 
 print "\n +=================================================================================================================+ \n"
 #Main menu selection options using TTY prompt gem
@@ -47,7 +47,7 @@ choices = [
     {name: '2 - Play now'.red, value: 2},
     {name: '3 - Exit'.red, value: 3}
 ]
-selection = prompt.select("\n #{name}, select an option below! \n".colorize(:color => :red, :background => :gray), choices)
+selection = prompt.select("\n #{$name}, select an option below! \n".colorize(:color => :red, :background => :gray), choices)
     case selection 
         when 1
             ::Gamecontroller.show

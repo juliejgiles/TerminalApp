@@ -7,6 +7,7 @@ require_relative './views/player_two_cards.rb'
 require_relative './views/deal_flop.rb'
 require_relative './views/reveal_turn_river.rb'
 require_relative './views/reveal_all_cards.rb'
+require 'yaml'
 require 'artii'
 include Views
 include Animations
@@ -17,15 +18,15 @@ module Draw
 attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, :z
 
     def self.draw_cards
-        $card1 = $Deck[0]
-        $card2 = $Deck[1]
-        $card3 = $Deck[2]
-        $card4 = $Deck[3]
-        $card5 = $Deck[4]
-        $card6 = $Deck[5]
-        $card7 = $Deck[6]
-        $card8 = $Deck[7]
-        $card9 = $Deck[8]
+        $card1 = $DECK[0]
+        $card2 = $DECK[1]
+        $card3 = $DECK[2]
+        $card4 = $DECK[3]
+        $card5 = $DECK[4]
+        $card6 = $DECK[5]
+        $card7 = $DECK[6]
+        $card8 = $DECK[7]
+        $card9 = $DECK[8]
 
         $a = $card1.value
         $b = $card2.value
@@ -186,9 +187,9 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                     dealer_scores << card_1  << card_2 << card_3 << card_4  << card_5  << card_6  << card_7 
                                     dealer_scores = dealer_scores.compact.sort
 
-                                        #DETECTING COMBOS FOR PLAYER
+                                    #DETECTING COMBOS FOR PLAYER
 
-                                        #Checking for royal flush
+                                    #Checking for royal flush
                                     if player_scores.compact.combination(5).find {|a,b,c,d,e| a+b+c+d+e == 205 || a+b+c+d+e == 210 || a+b+c+d+e == 215 || a+b+c+d+e == 220}
                                     
                                     print "\n You have a royal flush
@@ -243,7 +244,6 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                             print "\n You have a pair
                                             \n".bold.colorize(:color => :red, :background => :white)
                                             player_rank = 9
-
                                     end 
 
                                  #DETECTING COMBOS FOR DEALER
@@ -302,13 +302,12 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                                 print "\n Dealer has a pair
                                                 \n".bold.colorize(:color => :red, :background => :white)
                                                 dealer_rank = 9
-
                                         end 
 
                                         sleep 1
 
                                         art = Artii::Base.new 
-                                       
+
                                         if dealer_rank < player_rank
                                             print "\n YOU LOSE!
                                             \n".red.bold
@@ -316,24 +315,47 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                                 print "
                                             
                                                 "
-                                                puts art.asciify('YOU LOSE!')  
-                                                ::Views::End.print_end
+                                                print "\n"
+                                                puts art.asciify('YOU  LOSE !')  
+                                                ::Gamecontroller.end_game
+                                                outcome = "lost"
 
                                         elsif player_rank < dealer_rank
                                             print "
 
                                             "
-                                            puts art.asciify('YOU WIN!')
-                                                ::Views::End.print_end
+                                            print "\n"
+                                            puts art.asciify('YOU  WIN !')
+                                            ::Gamecontroller.end_game
+                                            outcome = "won"
                                      
                                         elsif player_rank == dealer_rank
                                             print "
                                             
                                             "
-                                            puts art.asciify('It is a TIE!')
-                                                ::Views::End.print_end
+                                            print "\n"
+                                            puts art.asciify('It  is  a  TIE !')
+                                            ::Gamecontroller.end_game
+                                            outcome = "tied with the dealer"
+                                        
                                         end 
-
+                                        
+                                        #Write result of game and the player's name to file and shows list
+                                        record = []
+                                        begin
+                                        record << "#{$name} played the game at #{Time.now} and they #{outcome}."
+                                        File.open('players.yml', 'a'){|file| file.write(record.to_yaml)}
+                                            rescue ArgumentError => e 
+                                                puts "Could not parse YAML: #{e.message}"
+                                            end 
+                                        
+                                        print "\n"
+                                        puts "\n Game recap".bold.red 
+                                        
+                                        result = YAML.load_file('players.yml')
+                                        puts result
+                                    
+                                     
                             when '2'
                                 puts "\n You have chosen to quit the game. 
                                 \n".bold.red
@@ -346,6 +368,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                         ::Gamecontroller.end_game
                     else
                         puts "You have selected #{input2} which is not a valid option"
+                        # retry
                  end 
                 end
     
