@@ -3,11 +3,14 @@ require_relative './models/deck.rb'
 require_relative './models/card.rb'
 require_relative './views/animation.rb'
 require_relative './views/end.rb'
+require_relative './views/player_two_cards.rb'
 include Views
 include Animations
 
 #Assigns the last 9 items in the @cards array to the below variables, which stays the same during a game
 module Draw
+attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, :z
+
     def self.draw_cards
         card1 = Deck.new.draw
         card2 = Deck.new.draw
@@ -19,28 +22,30 @@ module Draw
         card8 = Deck.new.draw
         card9 = Deck.new.draw
    
-        r = card1.suit
-        s = card2.suit
-        t = card3.suit
-        u = card4.suit
-        v = card5.suit
-        w = card6.suit
-        x = card7.suit
-        y = card8.suit
-        z = card9.suit
+        $a = card1.value
+        $b = card2.value
+        $c = card3.value
+        $d = card4.value
+        $e = card5.value
+        $f = card6.value
+        $g = card7.value
+        $h = card8.value
+        $i = card9.value  
 
-        a = card1.value
-        b = card2.value
-        c = card3.value
-        d = card4.value
-        e = card5.value
-        f = card6.value
-        g = card7.value
-        h = card8.value
-        i = card9.value  
+        $r = card1.suit
+        $s = card2.suit
+        $t = card3.suit
+        $u = card4.suit
+        $v = card5.suit
+        $w = card6.suit
+        $x = card7.suit
+        $y = card8.suit
+        $z = card9.suit
+
+       
 
 #For the purposes of representing the cards visually, the numbers are converted to A,J,Q,K if they are drawn
-        arr = [a,b,c,d,e,f,g,h,i]
+        arr = [$a,$b,$c,$d,$e,$f,$g,$h,$i]
         arr2 = arr.map do |num|
             case num 
             when 1 
@@ -56,28 +61,32 @@ module Draw
             end 
         end 
 
-     a = arr2[0]
-     b = arr2[1]
-     c = arr2[2]
-     d = arr2[3]
-     e = arr2[4]
-     f = arr2[5]
-     g = arr2[6]
-     h = arr2[7]
-     i = arr2[8]
+     $a = arr2[0]
+     $b = arr2[1]
+     $c = arr2[2]
+     $d = arr2[3]
+     $e = arr2[4]
+     $f = arr2[5]
+     $g = arr2[6]
+     $h = arr2[7]
+     $i = arr2[8]
 
-        print "\n You have been dealt the following cards: \n".red
-        print "\n
-        ┌────────────┐         ┌────────────┐         
-        │#{a}           |         │#{b}           |         
-        │            │         │            │         
-        │            │         │            │        
-        │     #{r}      │         │     #{s}      │         
-        │            │         │            │         
-        │            │         │            │         
-        │           #{a}│         │           #{b}│         
-        └────────────┘         └────────────┘         
-        "
+
+     p $a 
+     ::Player_two_cards.draw_player_two_cards
+
+        # print "\n You have been dealt the following cards: \n".red
+        # print "\n
+        # ┌────────────┐         ┌────────────┐         
+        # │#{@a}           |         │#{@b}           |         
+        # │            │         │            │         
+        # │            │         │            │        
+        # │     #{@r}      │         │     #{@s}      │         
+        # │            │         │            │         
+        # │            │         │            │         
+        # │           #{@a}│         │           #{@b}│         
+        # └────────────┘         └────────────┘         
+        # "
 
         print "\n Select an option using the number below: 
         \n".red
