@@ -1,4 +1,4 @@
-require_relative 'dispatch2'
+require_relative './controllers/controller.rb'
 require_relative './models/deck.rb'
 require_relative './models/card.rb'
 require_relative './views/animation.rb'
@@ -6,9 +6,9 @@ require_relative './views/end.rb'
 include Views
 include Animations
 
+#Assigns the last 9 items in the @cards array to the below variables, which stays the same during a game
 module Draw
     def self.draw_cards
-
         card1 = Deck.new.draw
         card2 = Deck.new.draw
         card3 = Deck.new.draw
@@ -18,9 +18,7 @@ module Draw
         card7 = Deck.new.draw
         card8 = Deck.new.draw
         card9 = Deck.new.draw
-        # puts "You got the #{card.value} of #{card.suit}"
-
-
+   
         r = card1.suit
         s = card2.suit
         t = card3.suit
@@ -30,7 +28,6 @@ module Draw
         x = card7.suit
         y = card8.suit
         z = card9.suit
-
 
         a = card1.value
         b = card2.value
@@ -42,107 +39,32 @@ module Draw
         h = card8.value
         i = card9.value  
 
-       case a
-        when 11
-            a = 'J'
-        when 12
-            a = 'Q'
-        when 13
-            a = 'K'
-        when 14
-            a = 'A'
+#For the purposes of representing the cards visually, the numbers are converted to A,J,Q,K if they are drawn
+        arr = [a,b,c,d,e,f,g,h,i]
+        arr2 = arr.map do |num|
+            case num 
+            when 1 
+                num = 'A'
+            when 11
+                num = 'J' 
+            when 12
+                num = 'Q'
+            when 13
+                num = 'K'
+            else 
+                num = num
+            end 
         end 
 
-        case b
-        when 11
-            b = 'J'
-        when 12
-            b = 'Q'
-        when 13
-            b = 'K'
-        when 14
-            b = 'A'
-        end 
-
-        case c
-        when 11
-            c = 'J'
-        when 12
-            c = 'Q'
-        when 13
-            c = 'K'
-        when 14
-            c = 'A'
-        end 
-
-        case d
-        when 11
-            d = 'J'
-        when 12
-            d = 'Q'
-        when 13
-            d = 'K'
-        when 14
-            d = 'A'
-        end 
-
-        case e
-        when 11
-            e = 'J'
-        when 12
-            e = 'Q'
-        when 13
-            e = 'K'
-        when 14
-            e = 'A'
-        end 
-
-        case f
-        when 11
-            f = 'J'
-        when 12
-            f = 'Q'
-        when 13
-            f = 'K'
-        when 14
-            f = 'A'
-        end 
-
-
-        case g
-        when 11
-            g = 'J'
-        when 12
-            g = 'Q'
-        when 13
-            g = 'K'
-        when 14
-            g = 'A'
-        end 
-
-
-        case h
-        when 11
-            h = 'J'
-        when 12
-            h = 'Q'
-        when 13
-            h = 'K'
-        when 14
-            h = 'A'
-        end 
-
-
-        case i
-        when 11
-            i = 'J'
-        when 12
-            i = 'Q'
-        when 13
-            i = 'K'
-        when 14
-            i = 'A'
-        end 
+     a = arr2[0]
+     b = arr2[1]
+     c = arr2[2]
+     d = arr2[3]
+     e = arr2[4]
+     f = arr2[5]
+     g = arr2[6]
+     h = arr2[7]
+     i = arr2[8]
 
         print "\n You have been dealt the following cards: \n".red
         print "\n
@@ -302,65 +224,11 @@ module Draw
 
                                     #Storing card values only for certain comparisons  
                                     player_card_number << player_hand[0].value << player_hand[1].value << player_hand[2].value << player_hand[3].value  << player_hand[4].value << player_hand[5].value << player_hand[6].value
-                                    
-                                    # player_card_number[player_card_number.index(:J)] = 11
-                                    # player_card_number[player_card_number.index(:Q)] = 12
-                                    # player_card_number[player_card_number.index(:K)] = 13
-                                    # player_card_number[player_card_number.index(:A)] = 14
-
-                                    # a = player_card_number.index(:J)
-                                    # b = player_card_number.index(:Q)
-                                    # c = player_card_number.index(:K)
-                                    # d = player_card_number.index(:A)
-                                    
-                                    # if !a==nil
-                                    #     player_card_number[a] == 11
-                                    # end 
-
-                                    # if !b==nil
-                                    #     player_card_number[b] == 12
-                                    # end 
-
-                                    # if !c==nil
-                                    #     player_card_number[c] == 13
-                                    # end 
-
-                                    # if !d==nil
-                                    #     player_card_number[d] == 14
-                                    # end 
-
-                                   
+                            
                                     player_card_number = player_card_number.compact.sort
                              
-                                    
                                     dealer_card_number << dealer_hand[0].value << dealer_hand[1].value << dealer_hand[2].value << dealer_hand[3].value  << dealer_hand[4].value << dealer_hand[5].value << dealer_hand[6].value
-
-                                    # dealer_card_number[dealer_card_number.index(:J)] = 11
-                                    # dealer_card_number[dealer_card_number.index(:Q)] = 12
-                                    # dealer_card_number[dealer_card_number.index(:K)] = 13
-                                    # dealer_card_number[dealer_card_number.index(:A)] = 14
-
-                                    # a = dealer_card_number.index(:J)
-                                    # b = dealer_card_number.index(:Q)
-                                    # c = dealer_card_number.index(:K)
-                                    # d = dealer_card_number.index(:A)
-                                    
-                                    # if !a==nil
-                                    #     dealer_card_number[a] == 11
-                                    # end 
-
-                                    # if !b==nil
-                                    #     dealer_card_number[b] == 12
-                                    # end 
-
-                                    # if !c==nil
-                                    #     dealer_card_number[c] == 13
-                                    # end 
-
-                                    # if !d==nil
-                                    #     dealer_card_number[d] == 14
-                                    # end 
-                                    
+  
                                     dealer_card_number = dealer_card_number.compact.sort
                                   
                                     #Storing only card suit values for certain comparisons  
@@ -368,10 +236,6 @@ module Draw
                                     player_card_suits << player_hand[0].suit << player_hand[1].suit << player_hand[2].suit << player_hand[3].suit << player_hand[4].suit << player_hand[5].suit << player_hand[6].suit
                                     
                                     dealer_card_suits << dealer_hand[0].suit << dealer_hand[1].suit << dealer_hand[2].suit << dealer_hand[3].suit << dealer_hand[4].suit << dealer_hand[5].suit << dealer_hand[6].suit
-                                    
-                              
-
-
                                     
                                     #CALCULATING DEALER'S SCORES
                                     
@@ -388,7 +252,6 @@ module Draw
                                     dealer_scores = dealer_scores.compact.sort
 
                             
-                                    
                                         #DETECTING COMBOS FOR PLAYER
 
                                         #Checking for royal flush
@@ -504,7 +367,6 @@ module Draw
                                                 print "\n Dealer has a pair
                                                 \n".red
                                                 dealer_rank = 9
-    
                                         end 
 
                                         sleep 3
@@ -530,9 +392,6 @@ module Draw
                                         end 
 
 
-
-                             
-
                             when '2'
                                 puts "\n You have chosen to quit the game. 
                                 \n".red
@@ -547,8 +406,4 @@ module Draw
                 end
     
             end
-
-                           
-                                
-    
 end        

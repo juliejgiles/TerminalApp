@@ -1,5 +1,4 @@
 require_relative 'dispatch'
-require_relative 'dispatch2'
 require_relative 'draw'
 require_relative './views/animation.rb'
 require_relative './views/rules.rb'
