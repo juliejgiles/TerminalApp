@@ -2,6 +2,7 @@
 require_relative '../views/rules.rb'
 require_relative '../draw'
 require_relative '../views/end.rb'
+require_relative '../models/deck.rb'
 
 module Gamecontroller 
    

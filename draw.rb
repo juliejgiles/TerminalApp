@@ -79,7 +79,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
      ::Player_two_cards.draw_player_two_cards
         print "\n Select an option by entering a number below and press Enter: 
         \n".bold.colorize(:color => :red, :background => :white)
-        print "\n 1 - fold (new cards will be re-dealt)".bold.colorize(:color => :red, :background => :white)
+        print "\n 1 - fold".bold.colorize(:color => :red, :background => :white)
         print "\n 2 - check".bold.colorize(:color => :red, :background => :white)
         print "\n 3 - quit game
         \n".bold.colorize(:color => :red, :background => :white)
@@ -89,24 +89,25 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
 
         case command 
             when '1'
-                puts "\n You have chosen to fold in this round. New cards will be re-dealt to you.
+                puts "\n You have chosen to fold in this round.
                 \n".bold.colorize(:color => :red, :background => :white)
-                ::Gamecontroller.play
+                ::Gamecontroller.end_game
             when '2'
                 ::Deal_flop.deal_flop     
                 print "\n Select an option by entering a number below and press Enter: 
-        \n".bold.colorize(:color => :red, :background => :white)
-        print "\n 1 - fold".bold.colorize(:color => :red, :background => :white)
-        print "\n 2 - check".bold.colorize(:color => :red, :background => :white)
-        print "\n 3 - quit game
-        \n".bold.colorize(:color => :red, :background => :white)
-
-        input2 = gets.chomp.downcase.strip
+                \n".bold.colorize(:color => :red, :background => :white)
+                print "\n 1 - fold".bold.colorize(:color => :red, :background => :white)
+                print "\n 2 - check".bold.colorize(:color => :red, :background => :white)
+                print "\n 3 - quit game
+                \n".bold.colorize(:color => :red, :background => :white)
+           
+            input2 = gets.chomp.downcase.strip
                 case input2 
                     when '1'
-                        puts "\n You have chosen to fold in this round. New cards will be re-dealt to you. 
+                        puts "\n You have chosen to fold in this round. 
                         \n".bold.colorize(:color => :black, :background => :red)
-                        ::Gamecontroller.play
+                        ::Gamecontroller.end_game
+                      
                     when '2'
                         ::Reveal_turn_river.reveal_turn_river
                         print "\n Select an option by entering a number below and press Enter: 
@@ -371,6 +372,6 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                         # retry
                  end 
                 end
-    
-            end
+                
+         end
 end        
