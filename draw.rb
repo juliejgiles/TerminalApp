@@ -4,6 +4,7 @@ require_relative './models/card.rb'
 require_relative './views/animation.rb'
 require_relative './views/end.rb'
 require_relative './views/player_two_cards.rb'
+require_relative './views/deal_flop.rb'
 include Views
 include Animations
 
@@ -42,8 +43,6 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
         $y = card8.suit
         $z = card9.suit
 
-       
-
 #For the purposes of representing the cards visually, the numbers are converted to A,J,Q,K if they are drawn
         arr = [$a,$b,$c,$d,$e,$f,$g,$h,$i]
         arr2 = arr.map do |num|
@@ -71,22 +70,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
      $h = arr2[7]
      $i = arr2[8]
 
-
-     p $a 
      ::Player_two_cards.draw_player_two_cards
-
-        # print "\n You have been dealt the following cards: \n".red
-        # print "\n
-        # ┌────────────┐         ┌────────────┐         
-        # │#{@a}           |         │#{@b}           |         
-        # │            │         │            │         
-        # │            │         │            │        
-        # │     #{@r}      │         │     #{@s}      │         
-        # │            │         │            │         
-        # │            │         │            │         
-        # │           #{@a}│         │           #{@b}│         
-        # └────────────┘         └────────────┘         
-        # "
 
         print "\n Select an option using the number below: 
         \n".red
@@ -103,19 +87,22 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                 puts "\n You have chosen to fold in this round. 
                 \n".red
             when '2'
-                print "\n The Flop has been dealt by the dealer: \n".red
+
+        ::Deal_flop.deal_flop
+
+        #         print "\n The Flop has been dealt by the dealer: \n".red
                 
-        print "\n
-        ┌────────────┐         ┌────────────┐         ┌────────────┐        ┌────────────┐        ┌────────────┐
-        │#{c}           |         │#{d}           |         │#{e}           |        │░░░░░░░░░░░░|        │░░░░░░░░░░░░|
-        │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
-        │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
-        │     #{t}      │         │     #{u}      │         │     #{v}      │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
-        │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
-        │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
-        │           #{c}│         │           #{d}│         │           #{e}│        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
-        └────────────┘         └────────────┘         └────────────┘        └────────────┘        └────────────┘
-        "
+        # print "\n
+        # ┌────────────┐         ┌────────────┐         ┌────────────┐        ┌────────────┐        ┌────────────┐
+        # │#{c}           |         │#{d}           |         │#{e}           |        │░░░░░░░░░░░░|        │░░░░░░░░░░░░|
+        # │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
+        # │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
+        # │     #{t}      │         │     #{u}      │         │     #{v}      │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
+        # │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
+        # │            │         │            │         │            │        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
+        # │           #{c}│         │           #{d}│         │           #{e}│        │░░░░░░░░░░░░│        │░░░░░░░░░░░░│
+        # └────────────┘         └────────────┘         └────────────┘        └────────────┘        └────────────┘
+        # "
             
         print "\n Select an option using the number below: 
         \n".red
