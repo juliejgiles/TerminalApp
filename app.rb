@@ -15,8 +15,7 @@ song.play
 
 #ARGV help menu
 def process_argv(option)
-    case option 
-    when "-h"
+    if option  == "-h" || option == "--help"
         puts "\n This is the help menu
         \n".red
         begin
