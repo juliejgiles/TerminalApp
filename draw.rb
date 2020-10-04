@@ -77,6 +77,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
 
      #Two cards are dealt to the player and they are given the option to check, fold or quit the game
      ::Player_two_cards.draw_player_two_cards
+
      ::Gamecontroller.request_selection
 
         input = gets.chomp.downcase.strip.split(' ')
@@ -390,7 +391,14 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                         ::Gamecontroller.end_game
                    
                  end 
-                end
                 
+                
+            when '3'
+                puts "\n You have chosen to quit the game. 
+                \n".bold.red
+                ::Gamecontroller.end_game
+
+            end
+            
          end
 end        
