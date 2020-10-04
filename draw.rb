@@ -340,9 +340,18 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                             "
                                             print "\n"
                                             puts art.asciify('YOU  WIN !')
-                                            ::Gamecontroller.end_game
                                             outcome = "won"
-                                     
+
+                                            #Displaying image from YAML file if player wins
+                                            begin
+                                                win_img = File.open('winning.yml').read
+                                                    rescue ArgumentError => e 
+                                                        puts "Could not read YAML file: #{e.message}"
+                                                    end 
+                                                                                             
+                                                win_img.each_line {|line| puts line}
+                                                ::Gamecontroller.end_game
+                                                
                                         elsif player_rank == dealer_rank
                                             print "
                                             
@@ -358,7 +367,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                         record = []
                                         begin
                                         record << "#{$NAME} played the game at #{Time.now} and they #{outcome}."
-                                        File.open('players.yml', 'w'){|file| file.write(record.to_yaml)}
+                                        File.open('players.yml', 'a'){|file| file.write(record.to_yaml)}
                                             rescue ArgumentError => e 
                                                 puts "Could not parse YAML: #{e.message}"
                                             end 
@@ -366,8 +375,8 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                         print "\n"
                                         puts "\n Game recap".bold.red 
                                         
-                                        result = YAML.load_file('players.yml')
-                                        puts result
+                                        result = File.open('players.yml').read
+                                        result.each_line {|line| puts line}
                                     
                                      
                             when '2'
