@@ -1,6 +1,12 @@
 require_relative '../../draw.rb'
 
-#A test to confirm the royal flush combo detection in the src/draw.rb file is working correctly
+#A test to confirm the royal flush combo detection in the src/draw.rb file is working correctly.
+#The first step to detecting a royal flush is to check that the card values based on the 'order' index add up to the combo_detection calculation
+#In the test case of 7 cards, there are 5 cards which equate to a royal flush. They are not ordered, so this file also tests that the code can detect a combo from unordered cards.
+#If the 'combo_detection' line is successful, the value will be truthy (which is the case here).
+#Secondly, a royal flush must consist of the 5 card values of 10, J, Q, K, A. Again, the test case has 7 cards that are unordered and the code must detect the combo from unordered cards.
+#Thirdly, the cards in the combo must be of the same suit. 
+
 describe 'royal flush combo detection' do
     it 'should be able to calculate the value of the cards based on the order array and determine whether a combo exists'do
         player_scores = []

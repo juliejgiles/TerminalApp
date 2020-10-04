@@ -1,6 +1,13 @@
 require_relative '../../models/card.rb'
 
 #Test for the 'Card' class in the src/models/card.rb file 
+#Firstly, the Card class must be capable of being instantialized with a card value and a suit.
+#Secondly, it should not drawn the same card twice. The uniq() method is used to check that there are no doubles in the Deck.
+#Thirdly, the card value must be an integer and not a string, as comparisons are made on the card values which is an esssential part of the app.
+#Fourth, the suit value should be a symbol, and the suit is used to detect particular poker combinations.
+#Lastly, a card instance must have a truthy value. 
+
+
 describe 'Card class' do 
     it 'should be able to be able to be assigned a card number and suit' do 
         card = Card.new(1, :♦)

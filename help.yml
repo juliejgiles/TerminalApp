@@ -1,4 +1,10 @@
 HELP FILE
-kjgfldkjgldfkgjdflg
-dfglkdjfglkdjfgldkfjglkdfg
-dflgjdflgkjdlfkg
+Steps to install application & dependencies
+
+* the application can be downloaded from my github page at https://github.com/juliejgiles/TerminalApp 
+* the application requires Ruby Gems such as Colorize, TTY-Prompt, Ruby2d, Artii, RSpec and others. In the application directory in the command line interface, run `bundle install` to install the Ruby Gem dependencies for this application.
+* Next, run `./run_app.sh` to execute application.
+
+System/hardware requirements*
+* Ruby must be installed on your system to run this application
+* minimum requirements to run a command line interface application
