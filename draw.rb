@@ -224,7 +224,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                                 player_rank = 3
                                             
                                             #checking for full house 
-                                            elsif ((player_card_number.combination(3).find {|a,b,c| a+b+c ==a*3} ) && (player_card_number.combination(2).find {|a,b| a+b ==a*2} ))
+                                            elsif ((player_card_number.combination(3).find {|a,b,c, d, e| (a+b+c ==a*3) && (d+e == d*2)} ))
                                                 print "\n You have a full house
                                                 \n".bold.colorize(:color => :red, :background => :white)
                                                 player_rank = 4
@@ -283,7 +283,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                                     dealer_rank = 3
                                                 
                                                 #checking for full house 
-                                                elsif ((dealer_card_number.combination(3).find {|a,b,c| a+b+c ==a*3} ) && (dealer_card_number.combination(2).find {|a,b| a+b ==a*2} ))
+                                                elsif ((dealer_card_number.combination(3).find {|a,b,c, d, e| (a+b+c ==a*3) && (d+e == d*2)} ))
                                                     print "\n Dealer has a full house
                                                     \n".bold.colorize(:color => :red, :background => :white)
                                                     dealer_rank = 4
