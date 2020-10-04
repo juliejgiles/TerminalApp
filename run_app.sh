@@ -1,3 +1,6 @@
 #!/bin/bash
 
-ruby app.rb 
+ruby app.rb "my Terminal App", "have fun"
+
+
+

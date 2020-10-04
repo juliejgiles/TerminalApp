@@ -351,7 +351,7 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                                                                              
                                                 win_img.each_line {|line| puts line}
                                                 ::Gamecontroller.end_game
-                                                
+
                                         elsif player_rank == dealer_rank
                                             print "
                                             
@@ -378,7 +378,6 @@ attr_reader :a, :b, :c, :d, :e, :f, :g, :h, :i, :r, :s, :t, :u, :v, :w, :x, :y, 
                                         result = File.open('players.yml').read
                                         result.each_line {|line| puts line}
                                     
-                                     
                             when '2'
                                 puts "\n You have chosen to quit the game. 
                                 \n".bold.red

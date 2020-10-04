@@ -12,11 +12,32 @@ require 'ruby2d'
 #plays background music
 song = Music.new('music.mp3')
 song.play
+
+#ARGV help menu
+def process_argv(option)
+    case option 
+    when "-h"
+        puts "\n This is the help menu
+        \n".red
+        begin
+           help_text = File.open('help.yml').read
+                rescue ArgumentError => e 
+                    puts "Could not read YAML help file: #{e.message}"
+                end                                       
+            help_text.each_line {|line| puts line}
+        exit 
+    end 
+end 
+@options = {}
+ARGV.each {|option| process_argv(option)}
+
+
+#ARGV greeting
 title = "my Terminal App"
-user = "Username"
+greeting = "Username"
 title = ARGV[0] if ARGV[0]
-user = ARGV[1] if ARGV[1]
-puts "Welcome to #{title}, #{user}!"
+greeting = ARGV[1] if ARGV[1]
+puts "Welcome to #{title} #{greeting}!"
 print "\n +=================================================================================================================+ \n"
 puts "
 
